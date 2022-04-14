@@ -9,5 +9,4 @@ public class FbcBotApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FbcBotApplication.class, args);
 	}
-
 }

@@ -1,0 +1,38 @@
+telegrambot:
+  botUsername: '@fpm_blya_bot'
+  botToken: 2102122174:AAFbs06Cd5VoVgKUdnFTd-dJhCCKXOaBm9w
+  webHookPath: https://1219-79-170-109-180.ngrok.io
+localeTag: ru-RU
+
+spring:
+  datasource:
+    url: ${database_url}
+    username: ${database_username}
+    password: ${database_password}
+    hikari:
+      schema: fbc-bot
+      maximum-pool-size: 3
+      idle-timeout: 10000
+      connection-timeout: 20000
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: none
+        order_inserts: true
+        order_updates: true
+        id:
+          new_generator_mappings: true
+        jdbc:
+          batch_size: 5000
+          batch_versioned_data: true
+          fetch_size: 5000
+    open-in-view: false
+
+
+    show-sql: true
+
+  flyway:
+    schemas: fbc-bot
+
+server:
+  port: 5000

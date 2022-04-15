@@ -25,9 +25,8 @@ public class DailyCockSize implements Serializable {
 
     private Long size;
 
-    @OneToOne(fetch = LAZY)
     @MapsId
-//    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = LAZY)
     private User user;
 
     private OffsetDateTime createdAt;

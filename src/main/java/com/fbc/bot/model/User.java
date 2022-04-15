@@ -29,8 +29,6 @@ public class User extends BaseEntity {
     private String nickname;
 
     @OneToOne(mappedBy = "user", cascade = {PERSIST, MERGE})
-//    @JoinTable(name = "daily_cock_sizes")
-//    @JoinColumn(name = "user_id")
     @PrimaryKeyJoinColumn
     private DailyCockSize cockSize;
 

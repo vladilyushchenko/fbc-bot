@@ -4,9 +4,10 @@ import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.WARN)
+import static org.mapstruct.ReportingPolicy.WARN;
+
+@Mapper(componentModel = "spring", unmappedTargetPolicy = WARN)
 public interface UserMapper {
 
     UserDto toDto(User user);

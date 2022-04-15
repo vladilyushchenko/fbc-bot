@@ -2,11 +2,11 @@ package com.fbc.bot.service.message;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
-@Service
+@Component
 public class LocaleMessageProvider {
     private final Locale locale;
     private final MessageSource messageSource;

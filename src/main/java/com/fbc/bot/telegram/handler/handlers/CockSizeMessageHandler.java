@@ -5,6 +5,8 @@ import com.fbc.bot.service.CockSizeService;
 import com.fbc.bot.service.UserService;
 import com.fbc.bot.service.reply.CockSizeGenerator;
 import com.fbc.bot.telegram.handler.MessageHandler;
+import com.fbc.bot.telegram.model.MessageType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -15,31 +17,27 @@ import java.util.Optional;
 import static com.fbc.bot.telegram.model.MessageType.SHARE_COCK_SIZE;
 
 @Service
-public class CockSizeMessageHandler extends MessageHandler {
+@RequiredArgsConstructor
+public class CockSizeMessageHandler implements MessageHandler {
 
     private final UserService userService;
     private final CockSizeGenerator sizeGenerator;
     private final CockSizeService sizeService;
 
-    public CockSizeMessageHandler(UserService userService,
-                                  CockSizeGenerator sizeGenerator,
-                                  CockSizeService sizeService) {
-        this.userService = userService;
-        this.sizeGenerator = sizeGenerator;
-        this.sizeService = sizeService;
-        super.setMessageType(SHARE_COCK_SIZE);
+    @Override
+    public MessageType getMessageType() {
+        return SHARE_COCK_SIZE;
     }
 
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
         var tgUser = update.getMessage().getFrom();
         Optional<User> user = userService.getUserByTelegramId(tgUser.getId());
-        String answer;
         if (user.isEmpty()) {
             user = Optional.of(userService.createUser(tgUser));
         }
         sizeService.updateUserCockSize(user.get());
-        answer = sizeGenerator.generateAnswer(user.get());
+        String answer = sizeGenerator.generateAnswer(user.get());
         return new SendMessage(update.getMessage().getChatId(), answer);
     }
 }

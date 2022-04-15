@@ -5,5 +5,6 @@ public enum MessageType {
     SHARE_COCK_SIZE,
     JOIN_PARTY,
     INLINE_SHARE_COCK_SIZE,
+    INLINE_UNKNOWN,
     UNKNOWN
 }

@@ -1,7 +1,7 @@
 package com.fbc.bot.service.impl;
 
-import com.fbc.bot.service.message.LocaleMessageProvider;
 import com.fbc.bot.service.MainMenuService;
+import com.fbc.bot.service.message.LocaleMessageProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
@@ -13,8 +13,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.fbc.bot.telegram.model.ResourceMessageKey.ASK_JOIN_PARTY;
-import static com.fbc.bot.telegram.model.ResourceMessageKey.ASK_SHARE_COCK_SIZE;
+import static com.fbc.bot.telegram.model.IncomeCommand.*;
+import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
@@ -44,9 +44,9 @@ public class MainMenuServiceImpl implements MainMenuService {
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
-        row1.add(new KeyboardButton(messageProvider.getLocalMessage(ASK_JOIN_PARTY.getValue())));
-        row2.add(new KeyboardButton(messageProvider.getLocalMessage(ASK_SHARE_COCK_SIZE.getValue())));
-        row3.add(new KeyboardButton("Я Лёха Рубчинский"));
+        row1.add(new KeyboardButton(messageProvider.getLocalMessage(ASK_JOIN_PARTY.getKey())));
+        row2.add(new KeyboardButton(messageProvider.getLocalMessage(ASK_SHARE_COCK_SIZE.getKey())));
+        row3.add(new KeyboardButton(messageProvider.getLocalMessage(ASK_ALEX_RUBCHINSKIY.getKey())));
         keyboard.add(row1);
         keyboard.add(row2);
         keyboard.add(row3);
@@ -56,11 +56,11 @@ public class MainMenuServiceImpl implements MainMenuService {
     private SendMessage createMessageWithKeyboard(final long chatId,
                                                   String textMessage,
                                                   ReplyKeyboardMarkup replyKeyboardMarkup) {
-        final SendMessage sendMessage = new SendMessage();
+        SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
         sendMessage.setText(textMessage);
-        if (replyKeyboardMarkup != null) {
+        if (nonNull(replyKeyboardMarkup)) {
             sendMessage.setReplyMarkup(replyKeyboardMarkup);
         }
         return sendMessage;

@@ -1,9 +1,13 @@
 package com.fbc.bot.exception;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
-@RequiredArgsConstructor
+@Getter
 public abstract class BaseException extends RuntimeException {
 
     private final String msg;
+
+    protected BaseException(String msg) {
+        this.msg = msg;
+    }
 }

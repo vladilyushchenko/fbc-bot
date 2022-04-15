@@ -21,7 +21,7 @@ public class BotServiceImpl implements BotService {
     @Override
     public BotApiMethod<?> handleUpdate(Update update) {
         log.info("handleUpdate() with update {}", update);
-        if (update.getMessage() == null) {
+        if (!update.hasInlineQuery() && update.getMessage() == null) {
             log.info("------------------NULL MESSAGE");
             return null;
         }

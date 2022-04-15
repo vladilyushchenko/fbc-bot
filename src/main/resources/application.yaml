@@ -1,8 +1,8 @@
-telegrambot:
-  botUsername: '@fpm_blya_bot'
-  botToken: 2102122174:AAFbs06Cd5VoVgKUdnFTd-dJhCCKXOaBm9w
-  webHookPath: https://1219-79-170-109-180.ngrok.io
-localeTag: ru-RU
+#telegrambot:
+#  botUsername: '@fpm_blya_bot'
+#  botToken: 2102122174:AAFbs06Cd5VoVgKUdnFTd-dJhCCKXOaBm9w
+#  webHookPath: https://7496-79-170-109-180.ngrok.io
+#localeTag: ru-RU
 
 spring:
   datasource:

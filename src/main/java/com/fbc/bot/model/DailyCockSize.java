@@ -1,19 +1,18 @@
 package com.fbc.bot.model;
 
-import com.fbc.bot.model.base.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 import static java.time.OffsetDateTime.now;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.AUTO;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,9 +25,9 @@ public class DailyCockSize implements Serializable {
 
     private Long size;
 
-    @OneToOne
+    @OneToOne(fetch = LAZY)
     @MapsId
-    @JoinColumn(name = "user_id")
+//    @JoinColumn(name = "user_id")
     private User user;
 
     private OffsetDateTime createdAt;

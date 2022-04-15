@@ -2,12 +2,9 @@ package com.fbc.bot.model.base;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 
 import static java.time.OffsetDateTime.now;

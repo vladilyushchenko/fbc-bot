@@ -1,51 +1,47 @@
 package com.fbc.bot.service.reply;
 
 import com.fbc.bot.model.User;
+import com.fbc.bot.service.message.LocaleMessageProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import static com.fbc.bot.model.UserStatus.CLUB_MEMBER;
+import static com.fbc.bot.util.MessageKeyConstants.*;
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
 
 @Component
+@RequiredArgsConstructor
 public class CockSizeGenerator {
 
+    private final LocaleMessageProvider messageProvider;
+
     public String generateAnswer(User user) {
-        StringBuilder answer = new StringBuilder();
         if (CLUB_MEMBER.equals(user.getUserStatus())) {
-            return getMemberAnswer(user, answer, user.getCockSize().getSize());
+            return getMemberAnswer(user.getNickname(), user.getCockSize().getSize());
         }
         return getUnknownMemberAnswer(user, user.getCockSize().getSize());
     }
+
+//    public String generateInlineQueryAnswer(User user) {
+//        DailyCockSize cockSize = user.getCockSize();
+//        if (CLUB_MEMBER.equals(user.getUserStatus())) {
+//            return getMemberAnswer(user.getNickname(), cockSize.getSize());
+//        }
+//        return getUnknownMemberAnswer(user, cockSize.getSize());
+//    }
 
     private String getUnknownMemberAnswer(User user, Long cockSize) {
         String name = isNull(user.getUserName())
                 ? user.getFirstName()
                 : "@" + user.getUserName();
-//        answer.append(name)
-//                .append(", у тебя сегодня ")
-//                .append(cockSize)
-//                .append("см.");
-        return format("%s, у тебя сегодня %dсм.", name, cockSize);
+        return format(messageProvider.getLocalMessage(INLINE_QUERY_REPLY_DEFAULT_SIZE), name, cockSize);
     }
 
-    private String getMemberAnswer(User user, StringBuilder answer, Long cockSize) {
-//        String answers = null;
-//        answer.append("О боже! Это же ")
-//                .append(user.getNickname())
-//                .append("!");
+    private String getMemberAnswer(String nickname, Long cockSize) {
         if (cockSize > 40) {
-            return format("О боже! Это же %s! Наконец норм хуй - %dсм.", user.getNickname(), cockSize);
-//            answer.append(" Наконец норм хуй -  ")
-//                    .append(cockSize)
-//                    .append("см.");
+            return format(messageProvider.getLocalMessage(INLINE_QUERY_REPLY_MEMBER_GOOD_SIZE), nickname, cockSize);
         }
-        return format("О боже! Это же %s! Сегодня взял перерыв, член только %dсм.", user.getNickname(), cockSize);
-//        if (cockSize <= 40) {
-//            answer.append(" Сегодня взял перерыв, член только ")
-//                    .append(cockSize)
-//                    .append("см.");
-//        }
-//        return answers;
+        return format(messageProvider.getLocalMessage(INLINE_QUERY_REPLY_MEMBER_BAD_SIZE), cockSize);
     }
 }

@@ -11,7 +11,6 @@ import java.time.Duration;
 import java.util.Random;
 
 import static com.fbc.bot.model.UserStatus.CLUB_MEMBER;
-import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
 import static java.time.OffsetDateTime.now;
 import static java.util.Objects.isNull;

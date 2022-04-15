@@ -3,7 +3,6 @@ package com.fbc.bot.service.impl;
 import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.exception.EntityNotFoundException;
 import com.fbc.bot.model.User;
-import com.fbc.bot.model.UserStatus;
 import com.fbc.bot.repository.UserRepository;
 import com.fbc.bot.service.UserService;
 import com.fbc.bot.service.mapper.UserMapper;

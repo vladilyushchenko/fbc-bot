@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateUser(User user) {
+        return repository.save(user);
+    }
+
+    @Override
     public UserDto getUserById(Long id) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));

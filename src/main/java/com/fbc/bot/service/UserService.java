@@ -11,6 +11,8 @@ public interface UserService {
 
     User createUser(org.telegram.telegrambots.meta.api.objects.User tgUser);
 
+    User updateUser(User user);
+
     UserDto getUserById(Long id);
 
     Optional<User> getUserByTelegramId(Integer telegramId);

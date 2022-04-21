@@ -11,6 +11,7 @@ import static com.fbc.bot.model.base.BaseEntity.SEQUENCE_GENERATOR;
 import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.LAZY;
 
 @Getter
 @Setter
@@ -28,8 +29,8 @@ public class User extends BaseEntity {
     private String userName;
     private String nickname;
 
-    @OneToOne(mappedBy = "user", cascade = {PERSIST, MERGE})
     @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "user", cascade = {PERSIST, MERGE}, fetch = LAZY)
     private DailyCockSize cockSize;
 
     @Enumerated(STRING)

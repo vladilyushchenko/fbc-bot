@@ -2,8 +2,8 @@ package com.fbc.bot.service.impl;
 
 import com.fbc.bot.model.DailyCockSize;
 import com.fbc.bot.model.User;
-import com.fbc.bot.repository.UserRepository;
 import com.fbc.bot.service.CockSizeService;
+import com.fbc.bot.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,9 @@ import static java.util.Objects.isNull;
 @RequiredArgsConstructor
 public class CockSizeServiceImpl implements CockSizeService {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
+    // todo: try another cascade types to save and update DailyCockSize when saving/updating user
     @Override
     public void updateUserCockSize(User user) {
         boolean noCockSize = isNull(user.getCockSize());
@@ -32,13 +33,13 @@ public class CockSizeServiceImpl implements CockSizeService {
                     .userId(user.getId())
                     .user(user)
                     .build());
-            userRepository.save(user);
+            userService.updateUser(user);
         }
         boolean cockSizeExpired = user.getCockSize().getUpdatedAt().isBefore(now().minus(Duration.ofDays(1)));
         if (cockSizeExpired) {
             user.getCockSize().setSize(generateCockSize(user));
             user.getCockSize().setUpdatedAt(now());
-            userRepository.save(user);
+            userService.updateUser(user);
         }
     }
 

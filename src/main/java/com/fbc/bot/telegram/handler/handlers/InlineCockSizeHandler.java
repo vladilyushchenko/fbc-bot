@@ -40,10 +40,6 @@ public class InlineCockSizeHandler implements MessageHandler {
 
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
-        // todo: throw if logic to higher level
-        if (!update.hasInlineQuery()) {
-            return null;
-        }
         return getAnswerInlineQuery(update);
     }
 
@@ -56,7 +52,7 @@ public class InlineCockSizeHandler implements MessageHandler {
         return answerInlineQuery;
     }
 
-    public InlineQueryResult getInlineAnswer(Update update) {
+    private InlineQueryResult getInlineAnswer(Update update) {
         InputTextMessageContent messageContent = new InputTextMessageContent();
         messageContent.setMessageText(getAnswerMessage(update));
         return getResultArticle(update.getInlineQuery(), messageContent);

@@ -14,7 +14,7 @@ import static com.fbc.bot.data.UpdateDataProvider.getUpdateWithNonExistingUser;
 import static org.apache.logging.log4j.util.Strings.isNotBlank;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class CockSizeMessageHandlerTest extends BaseIntegrationTest {
+class CockSizeMessageHandlerIntegrationTest extends BaseIntegrationTest {
 
     @Autowired
     private InlineCockSizeHandler handler;

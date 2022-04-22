@@ -1,48 +1,57 @@
 package com.fbc.bot.service.impl;
 
+import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.User;
 import com.fbc.bot.service.UserService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.OffsetDateTime;
 
-import static com.fbc.bot.data.UserDataProvider.getExistingCockSizeUnknownUser;
-import static com.fbc.bot.data.UserDataProvider.getUnknownUserWithoutSize;
+import static com.fbc.bot.data.UserDataProvider.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class CockSizeServiceImplTest {
 
-    private final UserService userService = mock(UserService.class);
-    private final CockSizeServiceImpl service = new CockSizeServiceImpl(userService);
+    @Mock
+    private UserService userService;
+    @InjectMocks
+    private CockSizeServiceImpl service;
 
     @Test
     public void updateUserCockSize_whenSizeExpired_UpdatesSize() {
         // Given
         User user = getExistingCockSizeUnknownUser();
+        UserDto userDto = getExistingCockSizeUnknownUserDto();
         OffsetDateTime oldCockSizeUpdateDate = user.getCockSize().getUpdatedAt();
 
+        when(userService.updateUser(user)).thenReturn(userDto);
+
         // When
-        when(userService.updateUser(user)).thenReturn(user);
+        service.updateUserCockSize(user);
 
         // Then
-        service.updateUserCockSize(user);
         assertTrue(user.getCockSize().getUpdatedAt().isAfter(oldCockSizeUpdateDate));
-        verify(userService, times(1)).updateUser(user);
     }
 
     @Test
     public void updateUserCockSize_whenSizeDoesntExist_CreatesSize() {
         // Given
         User user = getUnknownUserWithoutSize();
+        UserDto userDto = getExistingCockSizeUnknownUserDto();
+
+        when(userService.updateUser(user)).thenReturn(userDto);
 
         // When
-        when(userService.updateUser(user)).thenReturn(user);
+        service.updateUserCockSize(user);
 
         // Then
-        service.updateUserCockSize(user);
         assertNotNull(user.getCockSize());
-        verify(userService, times(1)).updateUser(user);
     }
 }

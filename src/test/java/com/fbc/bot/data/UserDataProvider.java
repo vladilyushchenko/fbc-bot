@@ -1,5 +1,6 @@
 package com.fbc.bot.data;
 
+import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.DailyCockSize;
 import com.fbc.bot.model.User;
 
@@ -30,6 +31,10 @@ public class UserDataProvider {
         user.setUpdatedAt(UNKNOWN_UPDATE_DATE);
         user.setCockSize(getExistingUnknownCockSize(user));
         return user;
+    }
+
+    public static UserDto getExistingCockSizeUnknownUserDto() {
+        return new UserDto(UNKNOWN_ID, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN);
     }
 
     public static User getUnknownUserWithoutSize() {

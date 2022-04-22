@@ -12,15 +12,15 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class UserDataProvider {
 
     public static final String UNKNOWN_NAME = "UNKNOWN";
-    public static final int UNKNOWN_ID = 1;
+    public static final Long UNKNOWN_ID = 1L;
     public static final OffsetDateTime UNKNOWN_CREATE_DATE = OffsetDateTime.now().minus(Duration.of(3L, DAYS));
     public static final OffsetDateTime UNKNOWN_UPDATE_DATE = OffsetDateTime.now().minus(Duration.of(2L, DAYS));
     public static final long OLD_SIZE = 1L;
-    public static final int NON_EXISTING_TELEGRAM_ID = 424189266;
+    public static final long NON_EXISTING_TELEGRAM_ID = 424189266L;
 
     public static User getExistingCockSizeUnknownUser() {
         User user = new User();
-        user.setId((long) UNKNOWN_ID);
+        user.setId(UNKNOWN_ID);
         user.setUserStatus(UNKNOWN);
         user.setUserName(UNKNOWN_NAME);
         user.setFirstName(UNKNOWN_NAME);
@@ -34,7 +34,7 @@ public class UserDataProvider {
 
     public static User getUnknownUserWithoutSize() {
         User user = new User();
-        user.setId((long) UNKNOWN_ID);
+        user.setId(UNKNOWN_ID);
         user.setUserStatus(UNKNOWN);
         user.setUserName(UNKNOWN_NAME);
         user.setFirstName(UNKNOWN_NAME);

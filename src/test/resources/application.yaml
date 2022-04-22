@@ -7,3 +7,6 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
     show-sql: true
     open-in-view: false
+
+  flyway:
+    locations: classpath:/db/integrationtest/migration

@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserByTelegramId(Integer telegramId) {
+    public Optional<User> getUserByTelegramId(Long telegramId) {
         return repository.findByTelegramId(telegramId);
     }
 }

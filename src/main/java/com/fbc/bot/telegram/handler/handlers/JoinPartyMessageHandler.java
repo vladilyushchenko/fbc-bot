@@ -26,6 +26,6 @@ public class JoinPartyMessageHandler implements MessageHandler {
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
         String answerMessage = messageService.getLocalMessage(ANSWER_JOIN_PARTY);
-        return new SendMessage(update.getMessage().getChatId(), answerMessage);
+        return new SendMessage(String.valueOf(update.getMessage().getChatId()), answerMessage);
     }
 }

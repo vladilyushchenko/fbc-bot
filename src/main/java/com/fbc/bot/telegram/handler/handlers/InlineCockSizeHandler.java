@@ -18,6 +18,7 @@ import org.telegram.telegrambots.meta.api.objects.inlinequery.inputmessageconten
 import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQueryResult;
 import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQueryResultArticle;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.fbc.bot.telegram.model.MessageType.INLINE_SHARE_COCK_SIZE;
@@ -46,16 +47,18 @@ public class InlineCockSizeHandler implements MessageHandler {
     private AnswerInlineQuery getAnswerInlineQuery(Update update) {
         AnswerInlineQuery answerInlineQuery = new AnswerInlineQuery();
         answerInlineQuery.setInlineQueryId(update.getInlineQuery().getId());
-        answerInlineQuery.setResults(getInlineAnswer(update));
+        answerInlineQuery.setResults(getInlineAnswerList(update));
         answerInlineQuery.setCacheTime(0);
-        answerInlineQuery.setPersonal(true);
+        answerInlineQuery.setIsPersonal(true);
+        answerInlineQuery.getResults().forEach(result -> {
+        });
         return answerInlineQuery;
     }
 
-    private InlineQueryResult getInlineAnswer(Update update) {
+    private List<InlineQueryResult> getInlineAnswerList(Update update) {
         InputTextMessageContent messageContent = new InputTextMessageContent();
         messageContent.setMessageText(getAnswerMessage(update));
-        return getResultArticle(update.getInlineQuery(), messageContent);
+        return List.of(getResultArticle(update.getInlineQuery(), messageContent));
     }
 
     private InlineQueryResultArticle getResultArticle(InlineQuery query, InputMessageContent content) {

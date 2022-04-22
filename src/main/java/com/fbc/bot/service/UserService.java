@@ -15,5 +15,5 @@ public interface UserService {
 
     UserDto getUserById(Long id);
 
-    Optional<User> getUserByTelegramId(Integer telegramId);
+    Optional<User> getUserByTelegramId(Long telegramId);
 }

@@ -38,6 +38,6 @@ public class CockSizeMessageHandler implements MessageHandler {
         }
         sizeService.updateUserCockSize(user.get());
         String answer = sizeGenerator.generateAnswer(user.get());
-        return new SendMessage(update.getMessage().getChatId(), answer);
+        return new SendMessage(String.valueOf(update.getMessage().getChatId()), answer);
     }
 }

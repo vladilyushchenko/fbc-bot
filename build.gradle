@@ -39,10 +39,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	// Telegram API
-	implementation group: 'org.telegram', name: 'telegrambots-spring-boot-starter', version: '4.4.0.2'
-
-	// TEMP Jsoup
-	implementation 'org.jsoup:jsoup:1.14.2'
+	implementation 'org.telegram:telegrambots-spring-boot-starter:6.0.1'
 
 	// Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

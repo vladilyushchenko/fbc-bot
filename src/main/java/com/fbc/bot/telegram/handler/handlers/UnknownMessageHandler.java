@@ -29,6 +29,6 @@ public class UnknownMessageHandler implements MessageHandler {
         if (update.hasInlineQuery()) {
             return null;
         }
-        return new SendMessage(update.getMessage().getChatId(), answerMessage);
+        return new SendMessage(String.valueOf(update.getMessage().getChatId()), answerMessage);
     }
 }

@@ -1,31 +1,30 @@
 package com.fbc.bot.controller;
 
-import com.fbc.bot.model.User;
+import com.fbc.bot.base.BaseIntegrationTest;
+import com.fbc.bot.service.BotService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static com.fbc.bot.data.UserDataProvider.NON_EXISTING_TELEGRAM_ID;
-import static com.fbc.bot.data.UserDataProvider.getNonexistentUserUpdate;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
+@AutoConfigureMockMvc
 class BotControllerIntegrationTest extends BaseIntegrationTest {
 
+    @Autowired
+    private MockMvc mockMvc;
+    @MockBean
+    private BotService botService;
+
     @Test
-    public void onChatUpdate_WhenInlineCockSizeWithNewUser_CreatesUserAndCockSize() throws Exception {
-        // Given
-        String requestBody = getNonexistentUserUpdate();
-
-        // Then
-        mvc.perform(post("/")
+    public void onUpdate_GetsRequests() throws Exception {
+        mockMvc.perform(post("/")
                         .contentType(APPLICATION_JSON)
-                        .content(requestBody))
+                        .content("{\"updateId\":1}"))
                 .andExpect(status().isOk());
-
-        User user = userRepository.findByTelegramId(NON_EXISTING_TELEGRAM_ID).orElse(null);
-        assertNotNull(user);
-        assertNotNull(user.getCockSize());
     }
 }

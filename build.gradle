@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'jacoco'
 	id "org.sonarqube" version "2.7.1"
 
 }
@@ -50,6 +51,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.h2database:h2'
 
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+	}
 }
 
 sonarqube {

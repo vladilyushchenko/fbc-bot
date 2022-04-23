@@ -46,7 +46,7 @@ public class CockSizeServiceImpl implements CockSizeService {
     private long generateCockSize(User user) {
         Random rnd = new Random(currentTimeMillis() % user.getTelegramId());
         if (CLUB_MEMBER.equals(user.getUserStatus())) {
-            return (long) (25 / 3 * (rnd.nextGaussian()) + 35);
+            return (long) (25 / 3.0 * (rnd.nextGaussian()) + 35);
         }
         return (long) (5 * (rnd.nextGaussian()) + 15);
     }

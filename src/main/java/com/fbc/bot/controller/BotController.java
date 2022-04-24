@@ -13,7 +13,7 @@ public class BotController {
 
     private final BotService service;
 
-    @PostMapping(value = "/")
+    @PostMapping("/")
     public Object onChatUpdate(@RequestBody Update update) {
         return service.handleUpdate(update);
     }

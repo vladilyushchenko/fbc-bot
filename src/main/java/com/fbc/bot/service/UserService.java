@@ -9,9 +9,11 @@ public interface UserService {
 
     UserDto createUser(UserDto userDto);
 
-    User createUser(org.telegram.telegrambots.meta.api.objects.User tgUser);
+    UserDto updateUser(User user);
 
     UserDto getUserById(Long id);
 
-    Optional<User> getUserByTelegramId(Integer telegramId);
+    User createUser(org.telegram.telegrambots.meta.api.objects.User tgUser);
+
+    Optional<User> getUserByTelegramId(Long telegramId);
 }

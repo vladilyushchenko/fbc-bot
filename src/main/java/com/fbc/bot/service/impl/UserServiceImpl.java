@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto updateUser(User user) {
+        return mapper.toDto(repository.save(user));
+    }
+
+    @Override
     public UserDto getUserById(Long id) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User", id));
@@ -41,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserByTelegramId(Integer telegramId) {
+    public Optional<User> getUserByTelegramId(Long telegramId) {
         return repository.findByTelegramId(telegramId);
     }
 }

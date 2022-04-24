@@ -16,6 +16,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "daily_cock_sizes")
 public class DailyCockSize implements Serializable {
 

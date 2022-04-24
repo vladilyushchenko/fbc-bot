@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.util.Objects;
+
+import static java.util.Objects.isNull;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -21,8 +25,8 @@ public class BotServiceImpl implements BotService {
     @Override
     public BotApiMethod<?> handleUpdate(Update update) {
         log.info("handleUpdate() with update {}", update);
-        if (!update.hasInlineQuery() && update.getMessage() == null) {
-            log.info("------------------NULL MESSAGE");
+        if (!update.hasInlineQuery() && isNull(update.getMessage())) {
+            log.info("INLINE QUERY WITH NULL MESSAGE");
             return null;
         }
         MessageType type = messageTypeService.getUserMessageType(update);

@@ -1,5 +1,6 @@
 package com.fbc.bot.model.base;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import static java.time.OffsetDateTime.now;
 @Getter
 @Setter
 @MappedSuperclass
+@EqualsAndHashCode
 public class BaseEntity implements Serializable {
 
     public static final String SEQUENCE_GENERATOR = "SEQ_GEN";

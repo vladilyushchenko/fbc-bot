@@ -58,7 +58,7 @@ public class MainMenuServiceImpl implements MainMenuService {
                                                   ReplyKeyboardMarkup replyKeyboardMarkup) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
-        sendMessage.setChatId(chatId);
+        sendMessage.setChatId(String.valueOf(chatId));
         sendMessage.setText(textMessage);
         if (nonNull(replyKeyboardMarkup)) {
             sendMessage.setReplyMarkup(replyKeyboardMarkup);

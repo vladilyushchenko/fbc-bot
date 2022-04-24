@@ -1,12 +1,17 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.6.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'jacoco'
+	id 'org.sonarqube' version '3.3'
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'org.barfuin.gradle.jacocolog' version '1.0.1'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
 group = 'com.fbc'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+apply plugin: 'jacoco'
 
 configurations {
 	compileOnly {
@@ -49,4 +54,37 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacoco {
+	toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.enabled true
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				counter = 'LINE'
+				minimum = 0.5
+			}
+		}
+	}
+}
+
+check.dependsOn jacocoTestCoverageVerification
+
+sonarqube {
+	properties {
+		property 'sonar.host.url', 'https://sonarcloud.io'
+		property 'sonar.organization', 'fbc-bot'
+		property 'sonar.projectKey', 'vladilyushchenko_fbc-bot'
+	}
 }

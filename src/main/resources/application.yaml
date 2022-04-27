@@ -29,3 +29,9 @@ spring:
 
 server:
   port: 5000
+
+# Spring boot Actuator
+management:
+  server:
+    address: 127.0.0.1
+    port: 8081

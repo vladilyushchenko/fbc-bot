@@ -1,7 +1,7 @@
 package com.fbc.bot.telegram.handler.handlers;
 
-import com.fbc.bot.service.MainMenuService;
 import com.fbc.bot.service.message.LocaleMessageProvider;
+import com.fbc.bot.service.telegram.MainMenuService;
 import com.fbc.bot.telegram.handler.MessageHandler;
 import com.fbc.bot.telegram.model.MessageType;
 import lombok.RequiredArgsConstructor;

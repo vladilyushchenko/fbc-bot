@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users
 (
     id          BIGINT PRIMARY KEY,
     telegram_id BIGINT       NOT NULL,
-    user_name    VARCHAR(255) NOT NULL,
+    user_name   VARCHAR(255) NOT NULL,
     first_name  VARCHAR(255) NOT NULL,
     last_name   VARCHAR(255) NOT NULL,
     nickname    VARCHAR(255),

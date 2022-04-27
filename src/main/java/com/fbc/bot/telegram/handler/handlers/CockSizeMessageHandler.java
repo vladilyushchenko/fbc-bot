@@ -1,9 +1,6 @@
 package com.fbc.bot.telegram.handler.handlers;
 
-import com.fbc.bot.model.User;
-import com.fbc.bot.service.CockSizeService;
-import com.fbc.bot.service.UserService;
-import com.fbc.bot.service.reply.CockSizeGenerator;
+import com.fbc.bot.service.telegram.CockSizeServiceFacade;
 import com.fbc.bot.telegram.handler.MessageHandler;
 import com.fbc.bot.telegram.model.MessageType;
 import lombok.RequiredArgsConstructor;
@@ -12,17 +9,13 @@ import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import java.util.Optional;
-
 import static com.fbc.bot.telegram.model.MessageType.SHARE_COCK_SIZE;
 
 @Service
 @RequiredArgsConstructor
 public class CockSizeMessageHandler implements MessageHandler {
 
-    private final UserService userService;
-    private final CockSizeGenerator sizeGenerator;
-    private final CockSizeService sizeService;
+    private final CockSizeServiceFacade sizeServiceFacade;
 
     @Override
     public MessageType getMessageType() {
@@ -32,12 +25,7 @@ public class CockSizeMessageHandler implements MessageHandler {
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
         var tgUser = update.getMessage().getFrom();
-        Optional<User> user = userService.getUserByTelegramId(tgUser.getId());
-        if (user.isEmpty()) {
-            user = Optional.of(userService.createUser(tgUser));
-        }
-        sizeService.updateUserCockSize(user.get());
-        String answer = sizeGenerator.generateAnswer(user.get());
+        String answer = sizeServiceFacade.getCockSizeAnswer(tgUser);
         return new SendMessage(String.valueOf(update.getMessage().getChatId()), answer);
     }
 }

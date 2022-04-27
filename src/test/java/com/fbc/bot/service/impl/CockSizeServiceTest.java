@@ -2,6 +2,7 @@ package com.fbc.bot.service.impl;
 
 import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.User;
+import com.fbc.bot.service.CockSizeService;
 import com.fbc.bot.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CockSizeServiceImplTest {
+class CockSizeServiceTest {
 
     @Mock
     private UserService userService;
     @InjectMocks
-    private CockSizeServiceImpl service;
+    private CockSizeService service;
 
     @Test
     public void updateUserCockSize_whenSizeExpired_UpdatesSize() {

@@ -1,10 +1,7 @@
 package com.fbc.bot.telegram.handler.handlers;
 
-import com.fbc.bot.model.User;
-import com.fbc.bot.service.CockSizeService;
-import com.fbc.bot.service.UserService;
 import com.fbc.bot.service.message.LocaleMessageProvider;
-import com.fbc.bot.service.reply.CockSizeGenerator;
+import com.fbc.bot.service.telegram.CockSizeServiceFacade;
 import com.fbc.bot.telegram.handler.MessageHandler;
 import com.fbc.bot.telegram.model.MessageType;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +16,6 @@ import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQuery
 import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQueryResultArticle;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.fbc.bot.telegram.model.MessageType.INLINE_SHARE_COCK_SIZE;
 import static com.fbc.bot.util.MessageKeyConstants.INLINE_QUERY_DESCRIPTION_SHARE_COCK_SIZE;
@@ -29,10 +25,8 @@ import static com.fbc.bot.util.MessageKeyConstants.INLINE_QUERY_TITLE_SHARE_COCK
 @RequiredArgsConstructor
 public class InlineCockSizeHandler implements MessageHandler {
 
-    private final CockSizeService sizeService;
-    private final UserService userService;
-    private final CockSizeGenerator sizeGenerator;
     private final LocaleMessageProvider messageProvider;
+    private final CockSizeServiceFacade sizeServiceFacade;
 
     @Override
     public MessageType getMessageType() {
@@ -41,17 +35,11 @@ public class InlineCockSizeHandler implements MessageHandler {
 
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
-        return getAnswerInlineQuery(update);
-    }
-
-    private AnswerInlineQuery getAnswerInlineQuery(Update update) {
         AnswerInlineQuery answerInlineQuery = new AnswerInlineQuery();
         answerInlineQuery.setInlineQueryId(update.getInlineQuery().getId());
         answerInlineQuery.setResults(getInlineAnswerList(update));
         answerInlineQuery.setCacheTime(0);
         answerInlineQuery.setIsPersonal(true);
-        answerInlineQuery.getResults().forEach(result -> {
-        });
         return answerInlineQuery;
     }
 
@@ -72,11 +60,6 @@ public class InlineCockSizeHandler implements MessageHandler {
 
     private String getAnswerMessage(Update update) {
         var tgUser = update.getInlineQuery().getFrom();
-        Optional<User> user = userService.getUserByTelegramId(tgUser.getId());
-        if (user.isEmpty()) {
-            user = Optional.of(userService.createUser(tgUser));
-        }
-        sizeService.updateUserCockSize(user.get());
-        return sizeGenerator.generateAnswer(user.get());
+        return sizeServiceFacade.getCockSizeAnswer(tgUser);
     }
 }

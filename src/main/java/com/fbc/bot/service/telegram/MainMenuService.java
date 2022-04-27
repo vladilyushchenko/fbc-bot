@@ -1,10 +1,8 @@
-package com.fbc.bot.service.impl;
+package com.fbc.bot.service.telegram;
 
-import com.fbc.bot.service.MainMenuService;
 import com.fbc.bot.service.message.LocaleMessageProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -18,12 +16,11 @@ import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
-public class MainMenuServiceImpl implements MainMenuService {
+public class MainMenuService {
 
     private final LocaleMessageProvider messageProvider;
 
-    @Override
-    public BotApiMethod<?> getStartMenu(final long chatId, final String textMessage) {
+    public SendMessage getStartMenu(final long chatId, final String textMessage) {
         final ReplyKeyboardMarkup replyKeyboardMarkup = getMainMenuKeyboard();
         return createMessageWithKeyboard(chatId, textMessage, replyKeyboardMarkup);
     }

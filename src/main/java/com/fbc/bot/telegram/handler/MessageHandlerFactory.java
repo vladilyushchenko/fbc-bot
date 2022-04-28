@@ -4,7 +4,7 @@ import com.fbc.bot.exception.SystemException;
 import com.fbc.bot.telegram.model.MessageType;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ public class MessageHandlerFactory {
     private final Map<MessageType, MessageHandler> handlers;
 
     public MessageHandlerFactory(List<MessageHandler> handlers) {
-        this.handlers = new HashMap<>();
+        this.handlers = new EnumMap<>(MessageType.class);
         handlers.forEach(handler -> this.handlers.put(handler.getMessageType(), handler));
     }
 

@@ -26,7 +26,7 @@ class CockSizeServiceTest {
     private CockSizeService service;
 
     @Test
-    public void updateUserCockSize_whenSizeExpired_UpdatesSize() {
+    void updateUserCockSize_whenSizeExpired_UpdatesSize() {
         // Given
         User user = getExistingCockSizeUnknownUser();
         UserDto userDto = getExistingCockSizeUnknownUserDto();
@@ -42,7 +42,7 @@ class CockSizeServiceTest {
     }
 
     @Test
-    public void updateUserCockSize_whenSizeDoesntExist_CreatesSize() {
+    void updateUserCockSize_whenSizeDoesntExist_CreatesSize() {
         // Given
         User user = getUnknownUserWithoutSize();
         UserDto userDto = getExistingCockSizeUnknownUserDto();

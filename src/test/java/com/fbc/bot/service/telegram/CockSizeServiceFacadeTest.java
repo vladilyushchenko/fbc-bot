@@ -13,6 +13,7 @@ import static com.fbc.bot.data.TelegramUserProvider.getExistingUser;
 import static com.fbc.bot.data.TelegramUserProvider.getUnknownUser;
 import static com.fbc.bot.data.UserDataProvider.PREPARED_ANSWER;
 import static com.fbc.bot.data.UserDataProvider.getUnknownUserWithoutSize;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -41,7 +42,7 @@ class CockSizeServiceFacadeTest {
         String answer = serviceFacade.getCockSizeAnswer(tgUser);
 
         // Then
-        assertEquals(answer, PREPARED_ANSWER);
+        assertThat(answer).isEqualTo(PREPARED_ANSWER);
     }
 
     @Test
@@ -57,6 +58,6 @@ class CockSizeServiceFacadeTest {
         String answer = serviceFacade.getCockSizeAnswer(tgUser);
 
         // Then
-        assertEquals(answer, PREPARED_ANSWER);
+        assertThat(answer).isEqualTo(PREPARED_ANSWER);
     }
 }

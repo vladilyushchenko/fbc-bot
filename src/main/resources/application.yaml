@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${database_url}
-    username: ${database_username}
-    password: ${database_password}
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     hikari:
       schema: fbc-bot
       maximum-pool-size: 3
@@ -26,6 +26,3 @@ spring:
 
   flyway:
     schemas: fbc-bot
-
-server:
-  port: 5000

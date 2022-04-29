@@ -1,0 +1,15 @@
+name: Creating docker container
+
+on:
+  push:
+    branches: [prod, dev]
+  pull_request:
+    branches: [prod, dev]
+
+jobs:
+  dockerizing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Building docker image
+        run: docker build --tag=fbc-bot:latest .

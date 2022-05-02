@@ -17,7 +17,7 @@ Use existing docker-compose.yml file to run the server via command
 
 Bot works via webhook technology. You should set webhook link via following link:
 
-    https://api.telegram.org/bot2102122174:AAEvhcaJAQ-cfThHhcfE6pbkKkwyFW9sVyc/setWebhook?url={webhook-link}
+    https://api.telegram.org/{bot_token}}/setWebhook?url={webhook-link}
 
 You could get current state of bot via following link:
 

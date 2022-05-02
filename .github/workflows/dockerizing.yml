@@ -13,3 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Building docker image
         run: docker build --tag=fbc-bot:latest .
+
+      - uses: actions/checkout@v2
+      - name: Building docker image
+        run: docker-compose up

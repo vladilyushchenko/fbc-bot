@@ -23,14 +23,6 @@ public class CockSizeGenerator {
         return getUnknownMemberAnswer(user, user.getCockSize().getSize());
     }
 
-//    public String generateInlineQueryAnswer(User user) {
-//        DailyCockSize cockSize = user.getCockSize();
-//        if (CLUB_MEMBER.equals(user.getUserStatus())) {
-//            return getMemberAnswer(user.getNickname(), cockSize.getSize());
-//        }
-//        return getUnknownMemberAnswer(user, cockSize.getSize());
-//    }
-
     private String getUnknownMemberAnswer(User user, Long cockSize) {
         String name = isNull(user.getUserName())
                 ? user.getFirstName()

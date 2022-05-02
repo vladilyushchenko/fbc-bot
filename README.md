@@ -11,6 +11,10 @@ When starting an application set -Djava.net.useSystemProxies=true
 for JVM to setup proxy for application if
 Telegram Api is unavailable in your country.
 
+Use existing docker-compose.yml file to run the server via command
+
+    docker-compose up
+
 Bot works via webhook technology. You should set webhook link via following link:
 
     https://api.telegram.org/bot2102122174:AAEvhcaJAQ-cfThHhcfE6pbkKkwyFW9sVyc/setWebhook?url={webhook-link}

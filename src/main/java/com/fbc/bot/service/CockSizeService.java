@@ -32,8 +32,8 @@ public class CockSizeService {
         if (noCockSize) {
             user.setCockSize(DailyCockSize.builder()
                     .size(generateCockSize(user))
-                    .updatedAt(now())
                     .createdAt(now())
+                    .updatedAt(now())
                     .userId(user.getId())
                     .user(user)
                     .build());

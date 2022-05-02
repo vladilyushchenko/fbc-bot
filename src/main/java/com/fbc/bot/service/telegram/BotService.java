@@ -1,7 +1,7 @@
 package com.fbc.bot.service.telegram;
 
 import com.fbc.bot.service.MessageTypeService;
-import com.fbc.bot.telegram.handler.MessageHandlerFactory;
+import com.fbc.bot.telegram.handler.MessageHandlerProvider;
 import com.fbc.bot.telegram.model.MessageType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import static java.util.Objects.isNull;
 @RequiredArgsConstructor
 public class BotService {
 
-    private final MessageHandlerFactory handlerFactory;
+    private final MessageHandlerProvider handlerProvider;
     private final MessageTypeService messageTypeService;
 
     public BotApiMethod<?> handleUpdate(Update update) {
@@ -26,6 +26,6 @@ public class BotService {
             return null;
         }
         MessageType type = messageTypeService.getUserMessageType(update);
-        return handlerFactory.getHandler(type).handleMessage(update);
+        return handlerProvider.getHandler(type).handleMessage(update);
     }
 }

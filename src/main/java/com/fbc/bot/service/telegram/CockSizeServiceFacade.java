@@ -18,7 +18,7 @@ public class CockSizeServiceFacade {
     @Transactional
     public String getCockSizeAnswer(org.telegram.telegrambots.meta.api.objects.User tgUser) {
         User user = Try.of(() -> userService.getUserByTelegramId(tgUser.getId()))
-                .getOrElse(userService.createUser(tgUser));
+                .getOrElse(() -> userService.createUser(tgUser));
         return cockSizeService.getCockSizeAnswer(user);
     }
 }

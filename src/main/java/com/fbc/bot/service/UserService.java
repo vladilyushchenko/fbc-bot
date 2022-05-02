@@ -3,7 +3,6 @@ package com.fbc.bot.service;
 import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.exception.EntityNotFoundException;
 import com.fbc.bot.model.User;
-import com.fbc.bot.model.User_;
 import com.fbc.bot.repository.UserRepository;
 import com.fbc.bot.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -42,6 +41,6 @@ public class UserService {
 
     public User getUserByTelegramId(Long telegramId) {
         return repository.findByTelegramId(telegramId)
-                .orElseThrow(() -> new EntityNotFoundException(User_.class, TELEGRAM_ID, telegramId));
+                .orElseThrow(() -> new EntityNotFoundException(User.class, TELEGRAM_ID, telegramId));
     }
 }

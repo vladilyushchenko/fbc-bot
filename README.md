@@ -26,6 +26,6 @@ Use VPN if Telegram Api is unavailable in your country.
 
 You can read more about it at https://hevodata.com/learn/telegram-webhooks/#i2
 
-You can get current state of bot via following link:
+You can get current state of bot via the following link:
 
     https://api.telegram.org/{bot_token}/getWebhookInfo

@@ -3,7 +3,6 @@ package com.fbc.bot.service.telegram;
 import com.fbc.bot.service.message.LocaleMessageProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -21,7 +20,7 @@ public class MainMenuService {
 
     private final LocaleMessageProvider messageProvider;
 
-    public BotApiMethod<?> getStartMenu(final long chatId, final String textMessage) {
+    public SendMessage getStartMenu(final long chatId, final String textMessage) {
         final ReplyKeyboardMarkup replyKeyboardMarkup = getMainMenuKeyboard();
         return createMessageWithKeyboard(chatId, textMessage, replyKeyboardMarkup);
     }

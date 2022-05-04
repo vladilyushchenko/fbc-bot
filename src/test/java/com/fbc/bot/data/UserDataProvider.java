@@ -12,12 +12,14 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class UserDataProvider {
 
+    public static final String PREPARED_ANSWER = "answer";
     public static final String UNKNOWN_NAME = "UNKNOWN";
-    public static final Long UNKNOWN_ID = 1L;
+    public static final String KNOWN_NAME = "KNOWN";
+    public static final long UNKNOWN_ID = 1L;
+    public static final long EXISTING_ID = 2L;
     public static final OffsetDateTime UNKNOWN_CREATE_DATE = OffsetDateTime.now().minus(Duration.of(3L, DAYS));
     public static final OffsetDateTime UNKNOWN_UPDATE_DATE = OffsetDateTime.now().minus(Duration.of(2L, DAYS));
     public static final long OLD_SIZE = 1L;
-    public static final long NON_EXISTING_TELEGRAM_ID = 424189266L;
 
     public static User getExistingCockSizeUnknownUser() {
         User user = new User();
@@ -50,12 +52,6 @@ public class UserDataProvider {
         return user;
     }
 
-    public static DailyCockSize getNewUnknownCockSize() {
-        return DailyCockSize.builder()
-                .user(getExistingCockSizeUnknownUser())
-                .build();
-    }
-
     public static DailyCockSize getExistingUnknownCockSize(User user) {
         return DailyCockSize.builder()
                 .user(user)
@@ -66,22 +62,12 @@ public class UserDataProvider {
                 .build();
     }
 
-    public static String getNonexistentUserUpdate() {
-        return "{\"update_id\":175105857," +
-                "\"inline_query\":" +
-                "{" +
-                "\"id\":\"1821879027527398246\"," +
-                "\"from\":" +
-                "{\"id\":\"424189266\"," +
-                "\"first_name\":\"Vlad\"," +
-                "\"isBot\":false," +
-                "\"last_name\":\"Ilyushchenko\"," +
-                "\"username\":\"vilshch\"," +
-                "\"language_code\":\"en\"" +
-                "}, " +
-                "\"query\":\"\", " +
-                "\"offset\":\"\"" +
-                "}" +
-                "}";
+    public User getUnknownUserWithoutCock() {
+        User user = new User();
+        user.setUserStatus(UNKNOWN);
+        user.setId(UNKNOWN_ID);
+        user.setUserName(UNKNOWN_NAME);
+        user.setFirstName(UNKNOWN_NAME);
+        return user;
     }
 }

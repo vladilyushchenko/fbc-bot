@@ -1,4 +1,4 @@
-package com.fbc.bot.service.impl;
+package com.fbc.bot.service;
 
 import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.User;
@@ -13,8 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.OffsetDateTime;
 
 import static com.fbc.bot.data.UserDataProvider.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +25,7 @@ class CockSizeServiceTest {
     private CockSizeService service;
 
     @Test
-    public void updateUserCockSize_whenSizeExpired_UpdatesSize() {
+    void updateUserCockSize_whenSizeExpired_UpdatesSize() {
         // Given
         User user = getExistingCockSizeUnknownUser();
         UserDto userDto = getExistingCockSizeUnknownUserDto();
@@ -38,11 +37,13 @@ class CockSizeServiceTest {
         service.updateUserCockSize(user);
 
         // Then
-        assertTrue(user.getCockSize().getUpdatedAt().isAfter(oldCockSizeUpdateDate));
+        assertThat(user)
+                .extracting("cockSize.updatedAt")
+                .matches(updateDate -> ((OffsetDateTime) updateDate).isAfter(oldCockSizeUpdateDate));
     }
 
     @Test
-    public void updateUserCockSize_whenSizeDoesntExist_CreatesSize() {
+    void updateUserCockSize_whenSizeDoesntExist_CreatesSize() {
         // Given
         User user = getUnknownUserWithoutSize();
         UserDto userDto = getExistingCockSizeUnknownUserDto();
@@ -53,6 +54,6 @@ class CockSizeServiceTest {
         service.updateUserCockSize(user);
 
         // Then
-        assertNotNull(user.getCockSize());
+        assertThat(user.getCockSize()).isNotNull();
     }
 }

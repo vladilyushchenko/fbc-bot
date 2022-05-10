@@ -1,24 +1,30 @@
 package com.fbc.bot.dto;
 
 import com.fbc.bot.model.UserStatus;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.Value;
 
 import javax.validation.constraints.NotNull;
 
 import static com.fbc.bot.util.ValidationConstants.NOT_NULL_FIELD;
 
-@Value
+@Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto implements BaseDto {
 
-    Long id;
+    private Long id;
     @NotNull(message = NOT_NULL_FIELD)
-    String firstName;
+    private String firstName;
     @NotNull(message = NOT_NULL_FIELD)
-    String lastName;
+    private String lastName;
     @NotNull(message = NOT_NULL_FIELD)
-    String username;
+    private String userName;
     @NotNull(message = NOT_NULL_FIELD)
-    UserStatus userStatus;
+    private UserStatus userStatus;
+    @NotNull(message = NOT_NULL_FIELD)
+    private String nickname;
 }

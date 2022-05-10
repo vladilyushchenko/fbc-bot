@@ -36,7 +36,7 @@ public class UserDataProvider {
     }
 
     public static UserDto getExistingCockSizeUnknownUserDto() {
-        return new UserDto(UNKNOWN_ID, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN);
+        return new UserDto(UNKNOWN_ID, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN, null);
     }
 
     public static User getUnknownUserWithoutSize() {

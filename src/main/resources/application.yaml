@@ -21,7 +21,6 @@ spring:
           batch_versioned_data: true
           fetch_size: 5000
     open-in-view: false
-
     show-sql: true
 
   security:

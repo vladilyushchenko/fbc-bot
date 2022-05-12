@@ -14,7 +14,6 @@ import static com.fbc.bot.data.TelegramUserProvider.getUnknownUser;
 import static com.fbc.bot.data.UserDataProvider.PREPARED_ANSWER;
 import static com.fbc.bot.data.UserDataProvider.getUnknownUserWithoutSize;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 

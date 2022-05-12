@@ -21,6 +21,14 @@ public class UserDataProvider {
     public static final OffsetDateTime UNKNOWN_UPDATE_DATE = OffsetDateTime.now().minus(Duration.of(2L, DAYS));
     public static final long OLD_SIZE = 1L;
 
+    public static UserDto getInvalidUserDto() {
+        return new UserDto();
+    }
+
+    public static UserDto getValidUserDto() {
+        return new UserDto(null, KNOWN_NAME, KNOWN_NAME, KNOWN_NAME, UNKNOWN, KNOWN_NAME);
+    }
+
     public static User getExistingCockSizeUnknownUser() {
         User user = new User();
         user.setId(UNKNOWN_ID);
@@ -36,7 +44,7 @@ public class UserDataProvider {
     }
 
     public static UserDto getExistingCockSizeUnknownUserDto() {
-        return new UserDto(UNKNOWN_ID, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN);
+        return new UserDto(UNKNOWN_ID, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN_NAME, UNKNOWN, null);
     }
 
     public static User getUnknownUserWithoutSize() {

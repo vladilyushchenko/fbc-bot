@@ -2,8 +2,6 @@ package com.fbc.bot.service;
 
 import com.fbc.bot.dto.UserDto;
 import com.fbc.bot.model.User;
-import com.fbc.bot.service.CockSizeService;
-import com.fbc.bot.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

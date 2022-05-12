@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
-public class BaseControllerTest {
+public abstract class BaseControllerTest {
 
     @MockBean
     private JwtDecoder jwtDecoder;

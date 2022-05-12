@@ -27,6 +27,9 @@ dependencies {
 	// Spring Web Starter
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// Actuator
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -41,8 +44,8 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
-	// Redis
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	// Util
+	implementation "io.vavr:vavr:0.10.4"
 
 	// Util
 	implementation "io.vavr:vavr:0.10.4"

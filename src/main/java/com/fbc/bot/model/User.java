@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-
 import java.util.Objects;
 
 import static com.fbc.bot.model.base.BaseEntity.ALLOCATION_SIZE;

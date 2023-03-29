@@ -16,6 +16,7 @@ import static com.fbc.bot.util.MessageKeyConstants.Response.INLINE_QUERY_TITLE_S
 @Component
 @RequiredArgsConstructor
 public class CockSizeInlineResultArticle implements ResultArticle {
+
     private final LocaleMessageProvider messageProvider;
     private final CockSizeServiceFacade sizeServiceFacade;
 

@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Component
 public class AlcoholFriendInlineResultArticle implements ResultArticle {
+
     @Override
     public InlineQueryResultArticle getArticle(Update update) {
         InlineQueryResultArticle article = new InlineQueryResultArticle();

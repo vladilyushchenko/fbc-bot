@@ -18,6 +18,7 @@ import static com.fbc.bot.telegram.handler.input.MessageType.INLINE_GLOBAL;
 @Component
 @RequiredArgsConstructor
 public class InlineGlobalHandler implements MessageHandler {
+
     private final List<ResultArticle> resultArticles;
 
     @Override
@@ -27,10 +28,6 @@ public class InlineGlobalHandler implements MessageHandler {
 
     @Override
     public BotApiMethod<?> handleMessage(Update update) {
-        return handleMessageNew(update);
-    }
-
-    public BotApiMethod<?> handleMessageNew(Update update) {
         AnswerInlineQuery answer = new AnswerInlineQuery(update.getInlineQuery().getId(),
                 getInlineAnswerList(update));
         answer.setCacheTime(0);
@@ -39,7 +36,8 @@ public class InlineGlobalHandler implements MessageHandler {
     }
 
     private List<InlineQueryResult> getInlineAnswerList(Update update) {
-        return resultArticles.stream().map(el -> el.getArticle(update))
+        return resultArticles.stream()
+                .map(el -> el.getArticle(update))
                 .collect(Collectors.toList());
     }
 }

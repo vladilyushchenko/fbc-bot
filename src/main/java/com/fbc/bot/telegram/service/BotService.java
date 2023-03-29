@@ -59,7 +59,7 @@ public class BotService {
             botSendMessageService.sendMessage(telegramProperties.getBot().getAuditChatId(),
                     String.format("%s: %s", author, text));
         } catch (Exception e) {
-            log.info("Exception while getting text of message for audit: {}", e.toString());
+            log.info("Exception while getting text of message for audit: {}", e);
         }
     }
 }

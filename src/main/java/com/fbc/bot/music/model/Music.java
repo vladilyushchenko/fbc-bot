@@ -1,7 +1,7 @@
 package com.fbc.bot.music.model;
 
-import com.fbc.bot.user.model.User;
 import com.fbc.bot.common.model.base.BaseEntity;
+import com.fbc.bot.user.model.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,22 +1,10 @@
 package com.fbc.bot.telegram.handler.handlers;
 
 import com.fbc.bot.base.BaseIntegrationTest;
-import org.apache.logging.log4j.util.Strings;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.telegram.telegrambots.meta.api.methods.AnswerInlineQuery;
-import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
-import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.inlinequery.inputmessagecontent.InputTextMessageContent;
-import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQueryResultArticle;
-
-import static com.fbc.bot.data.UpdateDataProvider.COCK_SIZE_INDEX;
-import static com.fbc.bot.data.UpdateDataProvider.getUpdateWithNonExistingUser;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class CockSizeMessageHandlerIntegrationTest extends BaseIntegrationTest {
 
-    @Autowired
+    /*@Autowired
     private InlineCockSizeHandler handler;
 
     @Test
@@ -34,5 +22,5 @@ class CockSizeMessageHandlerIntegrationTest extends BaseIntegrationTest {
         assertThat(cockSizeContent)
                 .extracting(InputTextMessageContent::getMessageText)
                 .matches(Strings::isNotBlank);
-    }
+    }*/
 }

@@ -10,7 +10,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.fbc.bot.telegram.handler.input.MessageType.*;
+import static com.fbc.bot.telegram.handler.input.MessageType.INLINE_GLOBAL;
+import static com.fbc.bot.telegram.handler.input.MessageType.UNKNOWN;
 
 @Slf4j
 @Service
@@ -19,7 +20,7 @@ public class MessageTypeService {
 
     private final MessageTypeMatcher typeMatcher;
     private final UserCacheService userCacheService;
-    private static final Set<MessageType> inlineMessageTypes = Set.of(INLINE_SHARE_COCK_SIZE, INLINE_UNKNOWN);
+    private static final Set<MessageType> inlineMessageTypes = Set.of(INLINE_GLOBAL);
 
     // in future take into account current user's bot state for interview-chatting
     public MessageType getUserMessageType(Update update) {

@@ -1,7 +1,7 @@
 package com.fbc.bot.data;
 
-import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.cocksize.model.DailyCockSize;
+import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.user.model.User;
 
 import java.time.Duration;

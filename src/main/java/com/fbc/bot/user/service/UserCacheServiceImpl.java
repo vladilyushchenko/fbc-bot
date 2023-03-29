@@ -1,8 +1,8 @@
 package com.fbc.bot.user.service;
 
-import com.fbc.bot.user.repository.UserRepository;
 import com.fbc.bot.telegram.dto.UserCacheDto;
 import com.fbc.bot.user.model.User;
+import com.fbc.bot.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

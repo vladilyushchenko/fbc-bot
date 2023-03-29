@@ -1,9 +1,9 @@
 package com.fbc.bot.common.telegram;
 
-import com.fbc.bot.user.service.UserService;
 import com.fbc.bot.exception.EntityNotFoundException;
 import com.fbc.bot.telegram.service.CockSizeService;
 import com.fbc.bot.telegram.service.CockSizeServiceFacade;
+import com.fbc.bot.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

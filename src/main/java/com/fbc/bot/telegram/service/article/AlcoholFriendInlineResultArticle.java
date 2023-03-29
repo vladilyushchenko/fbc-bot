@@ -13,9 +13,8 @@ public class AlcoholFriendInlineResultArticle implements ResultArticle {
     public InlineQueryResultArticle getArticle(Update update) {
         InlineQueryResultArticle article = new InlineQueryResultArticle();
         article.setId(UUID.randomUUID().toString());
-        // todo error: unmappable character (0xD1) for encoding UTF-8
-        article.setTitle("Who can I have a drink with?");
-        article.setDescription("Find yourself a drinking friend");
+        article.setTitle("С кем мне выпить?");
+        article.setDescription("Найти себе друга для совместного времяпрепровождения на баре");
         // todo: add pictures
 
         InputTextMessageContent content = new InputTextMessageContent();

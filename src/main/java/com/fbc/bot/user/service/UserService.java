@@ -1,10 +1,10 @@
 package com.fbc.bot.user.service;
 
+import com.fbc.bot.exception.EntityNotFoundException;
+import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.user.mapper.UserMapper;
 import com.fbc.bot.user.model.User;
 import com.fbc.bot.user.repository.UserRepository;
-import com.fbc.bot.user.dto.UserDto;
-import com.fbc.bot.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

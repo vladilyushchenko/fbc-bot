@@ -1,7 +1,7 @@
 package com.fbc.bot.user.controller;
 
-import com.fbc.bot.user.service.UserService;
 import com.fbc.bot.user.dto.UserDto;
+import com.fbc.bot.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

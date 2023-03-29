@@ -1,8 +1,5 @@
 package com.fbc.bot.music.service;
 
-import com.fbc.bot.user.model.User;
-import com.fbc.bot.user.repository.UserRepository;
-import com.fbc.bot.user.service.UserService;
 import com.fbc.bot.exception.EntityNotFoundException;
 import com.fbc.bot.music.client.DeezerMusicClient;
 import com.fbc.bot.music.dto.CottageMusicResultDto;
@@ -12,6 +9,9 @@ import com.fbc.bot.music.model.DataSource;
 import com.fbc.bot.music.model.Music;
 import com.fbc.bot.music.repository.MusicRepository;
 import com.fbc.bot.music.service.mapper.MusicMapper;
+import com.fbc.bot.user.model.User;
+import com.fbc.bot.user.repository.UserRepository;
+import com.fbc.bot.user.service.UserService;
 import com.fbc.bot.util.HttpUtils;
 import com.google.common.collect.Sets;
 import lombok.RequiredArgsConstructor;

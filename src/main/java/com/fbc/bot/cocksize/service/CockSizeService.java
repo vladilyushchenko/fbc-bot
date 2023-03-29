@@ -1,4 +1,4 @@
-package com.fbc.bot.telegram.service;
+package com.fbc.bot.cocksize.service;
 
 import com.fbc.bot.cocksize.model.DailyCockSize;
 import com.fbc.bot.cocksize.service.CockSizeGenerator;

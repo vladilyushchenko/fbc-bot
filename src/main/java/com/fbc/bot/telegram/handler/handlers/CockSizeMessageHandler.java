@@ -1,8 +1,8 @@
 package com.fbc.bot.telegram.handler.handlers;
 
+import com.fbc.bot.cocksize.service.CockSizeServiceFacade;
 import com.fbc.bot.telegram.handler.MessageHandler;
 import com.fbc.bot.telegram.handler.input.MessageType;
-import com.fbc.bot.telegram.service.CockSizeServiceFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;

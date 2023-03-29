@@ -26,3 +26,8 @@ spring:
 
   flyway:
     schemas: fbc-bot
+
+telegram:
+  bot:
+    botToken: ${TELEGRAM_BOT_TOKEN:6051083691:AAGV8y6IWaYIiAnCv7qS7vjsA88dUomr9lY}
+    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:424189266}

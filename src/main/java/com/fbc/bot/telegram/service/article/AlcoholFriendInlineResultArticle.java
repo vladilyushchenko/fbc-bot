@@ -14,8 +14,8 @@ public class AlcoholFriendInlineResultArticle implements ResultArticle {
     public InlineQueryResultArticle getArticle(Update update) {
         InlineQueryResultArticle article = new InlineQueryResultArticle();
         article.setId(UUID.randomUUID().toString());
-        article.setTitle("С кем мне выпить?");
-        article.setDescription("Найти себе друга для совместного времяпрепровождения на баре");
+        article.setTitle("РЎ РєРµРј РјРЅРµ РІС‹РїРёС‚СЊ?");
+        article.setDescription("РќР°Р№С‚Рё СЃРµР±Рµ РґСЂСѓРіР° РґР»СЏ СЃРѕРІРјРµСЃС‚РЅРѕРіРѕ РІСЂРµРјСЏРїСЂРµРїСЂРѕРІРѕР¶РґРµРЅРёСЏ РЅР° Р±Р°СЂРµ");
         // todo: add pictures
 
         InputTextMessageContent content = new InputTextMessageContent();

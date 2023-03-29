@@ -1,13 +1,13 @@
 package com.fbc.bot.data;
 
-import com.fbc.bot.dto.UserDto;
-import com.fbc.bot.model.DailyCockSize;
-import com.fbc.bot.model.User;
+import com.fbc.bot.user.dto.UserDto;
+import com.fbc.bot.cocksize.model.DailyCockSize;
+import com.fbc.bot.user.model.User;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;
 
-import static com.fbc.bot.model.UserStatus.UNKNOWN;
+import static com.fbc.bot.user.model.UserStatus.UNKNOWN;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class UserDataProvider {

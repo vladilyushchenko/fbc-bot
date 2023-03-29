@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.fbc.bot.telegram.handler.input.MessageType.INLINE_UNKNOWN;
+import static com.fbc.bot.telegram.handler.input.MessageType.INLINE_GLOBAL;
 import static com.fbc.bot.telegram.handler.input.MessageType.UNKNOWN;
 import static com.fbc.bot.util.LocaleConstants.LOCALE_RU;
 import static java.util.Arrays.stream;
@@ -39,7 +39,7 @@ public class MessageTypeMatcher {
 
     public MessageType getMessageType(Update update) {
         if (update.hasInlineQuery()) {
-            return inputToTypeMap.getOrDefault(update.getInlineQuery().getQuery(), INLINE_UNKNOWN);
+            return inputToTypeMap.getOrDefault(update.getInlineQuery().getQuery(), INLINE_GLOBAL);
         }
         return inputToTypeMap.getOrDefault(update.getMessage().getText(), UNKNOWN);
     }

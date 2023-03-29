@@ -1,6 +1,7 @@
 package com.fbc.bot.cocksize.service;
 
 import com.fbc.bot.cocksize.model.DailyCockSize;
+import com.fbc.bot.cocksize.service.CockSizeGenerator;
 import com.fbc.bot.user.model.User;
 import com.fbc.bot.user.service.UserService;
 import lombok.RequiredArgsConstructor;

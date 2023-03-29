@@ -11,7 +11,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.fbc.bot.telegram.handler.input.IncomeCommand.*;
+import static com.fbc.bot.telegram.handler.input.IncomeCommand.ASK_ADD_MUSIC;
+import static com.fbc.bot.telegram.handler.input.IncomeCommand.ASK_ALEX_RUBCHINSKIY;
 import static java.util.Objects.nonNull;
 
 @Service

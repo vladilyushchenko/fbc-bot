@@ -12,7 +12,6 @@ public enum IncomeCommand {
     ASK_SHARE_COCK_SIZE(MessageKeyConstants.IncomeCommand.ASK_SHARE_COCK_SIZE, MessageType.SHARE_COCK_SIZE),
     ASK_GROUP_SHARE_COCK_SIZE(MessageKeyConstants.IncomeCommand.ASK_GROUP_SHARE_COCK_SIZE, MessageType.SHARE_COCK_SIZE),
     ASK_ALEX_RUBCHINSKIY(MessageKeyConstants.IncomeCommand.ASK_ALEX_RUBCHINSKIY, MessageType.UNKNOWN),
-    INLINE_QUERY_ASK_SHARE_COCK_SIZE(MessageKeyConstants.IncomeCommand.INLINE_QUERY_ASK_SHARE_COCK_SIZE, MessageType.INLINE_SHARE_COCK_SIZE),
     ASK_ADD_MUSIC(MessageKeyConstants.IncomeCommand.ASK_ADD_MUSIC, MessageType.ADD_MUSIC);
 
     private final String key;

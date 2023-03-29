@@ -1,7 +1,7 @@
 package com.fbc.bot.telegram.handler;
 
-import com.fbc.bot.exception.SystemException;
-import com.fbc.bot.telegram.model.MessageType;
+import com.fbc.bot.exception.ApiException;
+import com.fbc.bot.telegram.handler.input.MessageType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class MessageHandlerProvider {
 
     public MessageHandler getHandler(MessageType type) {
         if (!messageHandlers.containsKey(type)) {
-            throw new SystemException(format("No handlers for MessageType %s", type));
+            throw new ApiException(format("No handlers for MessageType %s", type));
         }
         return messageHandlers.get(type);
     }

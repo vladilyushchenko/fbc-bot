@@ -1,15 +1,15 @@
 package com.fbc.bot.telegram.handler.handlers;
 
-import com.fbc.bot.service.telegram.CockSizeServiceFacade;
 import com.fbc.bot.telegram.handler.MessageHandler;
-import com.fbc.bot.telegram.model.MessageType;
+import com.fbc.bot.telegram.handler.input.MessageType;
+import com.fbc.bot.telegram.service.CockSizeServiceFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import static com.fbc.bot.telegram.model.MessageType.SHARE_COCK_SIZE;
+import static com.fbc.bot.telegram.handler.input.MessageType.SHARE_COCK_SIZE;
 
 @Service
 @RequiredArgsConstructor

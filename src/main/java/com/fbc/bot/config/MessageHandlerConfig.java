@@ -1,7 +1,7 @@
 package com.fbc.bot.config;
 
 import com.fbc.bot.telegram.handler.MessageHandler;
-import com.fbc.bot.telegram.model.MessageType;
+import com.fbc.bot.telegram.handler.input.MessageType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,7 +1,7 @@
 package com.fbc.bot.telegram.service.article;
 
+import com.fbc.bot.cocksize.service.CockSizeServiceFacade;
 import com.fbc.bot.message.service.LocaleMessageProvider;
-import com.fbc.bot.telegram.service.CockSizeServiceFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;

@@ -51,9 +51,6 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
-    // Properties processing
-//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-
     // Util
     implementation "io.vavr:vavr:0.10.4"
 

@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static com.fbc.bot.user.model.UserStatus.UNKNOWN;
 import static com.fbc.bot.user.model.User_.TELEGRAM_ID;
 
@@ -37,6 +39,10 @@ public class UserService {
         return mapper.toDto(repository.save(user));
     }
 
+    public List<User> getAll() {
+        return repository.findAll();
+    }
+
     public UserDto getUserById(Long id) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(User.class, id));
@@ -46,5 +52,9 @@ public class UserService {
     public User getUserByTelegramId(Long telegramId) {
         return repository.findByTelegramId(telegramId)
                 .orElseThrow(() -> new EntityNotFoundException(User.class, TELEGRAM_ID, telegramId));
+    }
+
+    public boolean existsByTelegramId(Long telegramId) {
+        return repository.existsByTelegramId(telegramId);
     }
 }

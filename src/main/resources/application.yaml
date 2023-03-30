@@ -29,5 +29,16 @@ spring:
 
 telegram:
   bot:
-    botToken: ${TELEGRAM_BOT_TOKEN:6051083691:AAGV8y6IWaYIiAnCv7qS7vjsA88dUomr9lY}
-    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:424189266}
+    botToken: ${TELEGRAM_BOT_TOKEN:6008183446:AAGQlTK3_-DBlO-dlZjyTND1FgVsTdkUjw4}
+    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:360617541}
+    mainChatId: -970277358
+
+bereal:
+  enabled: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 160000000
+        readTimeout: 160000000

@@ -21,7 +21,7 @@ public class AlcoholFriendInlineResultArticle implements ResultArticle {
         InputTextMessageContent content = new InputTextMessageContent();
         content.setMessageText("I love vodka");
         article.setInputMessageContent(content);
-        // todo: add pictures
+        
         return article;
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TelegramApiClient {
 
     @GetMapping("/bot{botToken}/sendMessage")
-    String sendMessage(@PathVariable String botToken,
-                       @RequestParam(name = "chat_id") String chatId,
+    Object sendMessage(@PathVariable String botToken,
+                       @RequestParam(name = "chat_id") Long chatId,
                        @RequestParam(name = "text") String text);
 }

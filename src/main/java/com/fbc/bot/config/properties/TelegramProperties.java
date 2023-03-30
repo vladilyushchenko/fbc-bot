@@ -17,7 +17,7 @@ public class TelegramProperties {
     @Setter
     public static class BotProperties {
         private String botToken;
-        private String auditChatId;
+        private Long auditChatId;
 
         public BotProperties() {
         }

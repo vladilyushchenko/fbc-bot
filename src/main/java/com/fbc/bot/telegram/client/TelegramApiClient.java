@@ -10,6 +10,6 @@ public interface TelegramApiClient {
 
     @GetMapping("/bot{botToken}/sendMessage")
     Object sendMessage(@PathVariable String botToken,
-                       @RequestParam(name = "chat_id") String chatId,
+                       @RequestParam(name = "chat_id") Long chatId,
                        @RequestParam(name = "text") String text);
 }

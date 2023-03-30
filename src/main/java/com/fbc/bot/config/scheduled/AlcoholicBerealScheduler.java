@@ -29,7 +29,7 @@ public class AlcoholicBerealScheduler {
         if (enabled) {
             String message = alcoholBerealGenerator.generateMessage();
             telegramApiClient.sendMessage(telegramProperties.getBot().getBotToken(),
-                    telegramProperties.getBot().getMainChatId(), message);
+                    Long.valueOf(telegramProperties.getBot().getMainChatId()), message);
         }
     }
 }

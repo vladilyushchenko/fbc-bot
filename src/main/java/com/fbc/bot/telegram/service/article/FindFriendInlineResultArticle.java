@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQuery
 import java.util.UUID;
 
 @Component
-public class AlcoholFriendInlineResultArticle implements ResultArticle {
+public class FindFriendInlineResultArticle implements ResultArticle {
 
     @Override
     public InlineQueryResultArticle getArticle(Update update) {

@@ -2,6 +2,7 @@ package com.fbc.bot.bereal.service;
 
 import com.fbc.bot.bereal.model.BerealTextTemplate;
 import com.fbc.bot.bereal.repository.BerealTextTemplateRepository;
+import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +16,7 @@ public class BerealTextTemplateService {
     private final BerealTextTemplateRepository repository;
 
     public List<BerealTextTemplate> getAll() {
-        List<BerealTextTemplate> textTemplates = new ArrayList<>();
-        repository.findAll().forEach(textTemplates::add);
-        return textTemplates;
+        return Lists.newArrayList(repository.findAll());
     }
 
     public BerealTextTemplate save(BerealTextTemplate textTemplate) {

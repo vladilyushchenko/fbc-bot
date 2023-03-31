@@ -36,10 +36,9 @@ public class AdminCheckAuditAspect {
                 User user = userService.getUserByTelegramId(update.getMessage().getFrom().getId());
 
                 if (!user.getUserStatus().equals(ADMIN)) {
-                    update.getMessage().getChat().getId();
                     botSendMessageService.sendMessage(update.getMessage().getChatId(),
                             messageService.getLocalMessage(ANSWER_BEREAL_NOT_ADMIN));
-                    log.info("Message sent");
+                    log.info("Not admin tried to turn bereal on/off");
                     return null;
                 }
             }

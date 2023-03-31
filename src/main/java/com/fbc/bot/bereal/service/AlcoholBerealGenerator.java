@@ -18,11 +18,6 @@ public class AlcoholBerealGenerator {
     private final UserService userService;
     private final Random random = new Random();
     private final BerealTextTemplateService textTemplateService;
-    /*private final List<String> textTemplates = List.of("" +
-                    "%s и %s, бармен вас уже заждался! Быстрее к нему!",
-            "%s, срочно бери %s и бегом на бар!",
-            "%s и %s, где вас буря носит? Бегом на бар, вы проштрафились.",
-            "%s и %s, идите на бар, скажите что от меня - я проставляюсь");*/
 
     public String generateMessage() {
         List<User> users = userService.getAll();

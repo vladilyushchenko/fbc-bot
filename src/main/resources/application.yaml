@@ -32,6 +32,3 @@ telegram:
     botToken: ${TELEGRAM_BOT_TOKEN:6008183446:AAGQlTK3_-DBlO-dlZjyTND1FgVsTdkUjw4}
     auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:360617541}
     mainChatId: -970277358
-
-bereal:
-  enabled: false

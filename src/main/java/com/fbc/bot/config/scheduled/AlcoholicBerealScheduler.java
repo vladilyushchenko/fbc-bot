@@ -15,13 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @Setter
-@ConfigurationProperties(value = "bereal")
 public class AlcoholicBerealScheduler {
 
     private final TelegramApiClient telegramApiClient;
     private final AlcoholBerealGenerator alcoholBerealGenerator;
     private final TelegramProperties telegramProperties;
-    private boolean enabled;
+    private boolean enabled = false;
 
     @SneakyThrows
     @Scheduled(fixedRate = 10000)

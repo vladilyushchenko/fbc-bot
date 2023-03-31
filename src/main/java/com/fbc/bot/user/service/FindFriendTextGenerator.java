@@ -1,6 +1,8 @@
 package com.fbc.bot.user.service;
 
+import com.fbc.bot.message.service.LocaleMessageProvider;
 import com.fbc.bot.user.model.User;
+import com.fbc.bot.util.MessageKeyConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -8,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.fbc.bot.util.MessageKeyConstants.Response.INLINE_QUERY_REPLY_FIND_FRIEND;
+
 @Component
 @RequiredArgsConstructor
 public class FindFriendTextGenerator {
 
     private final UserService userService;
-    public static final String template = "%s приглашает %s на бар";
     private final Random random = new Random();
+    private final LocaleMessageProvider localeMessageProvider;
 
     public String getText(Long telegramId) {
         User firstUser = userService.getUserByTelegramId(telegramId);
@@ -27,6 +31,7 @@ public class FindFriendTextGenerator {
             secondUser = users.get(index);
         }
 
-        return String.format(template, "@" + firstUser.getUserName(), "@" + secondUser.getUserName());
+        return String.format(localeMessageProvider.getLocalMessage(INLINE_QUERY_REPLY_FIND_FRIEND),
+                "@" + firstUser.getUserName(), "@" + secondUser.getUserName());
     }
 }

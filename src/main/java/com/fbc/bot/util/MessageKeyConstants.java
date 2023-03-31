@@ -10,6 +10,9 @@ public class MessageKeyConstants {
         public static final String ANSWER_UNKNOWN = "answer.unknown";
         public static final String ANSWER_START = "answer.start";
         public static final String ANSWER_JOIN_PARTY = "answer.joinParty";
+        public static final String ANSWER_BEREAL_NOT_ADMIN = "answer.bereal.notAdmin";
+        public static final String ANSWER_BEREAL_TURNED_ON = "answer.bereal.turnedOn";
+        public static final String ANSWER_BEREAL_TURNED_OFF = "answer.bereal.turnedOff";
         public static final String ANSWER_ADD_MUSIC_FAILURE = "answer.addMusic.failure";
         public static final String ANSWER_ADD_MUSIC_SUCCESS = "answer.addMusic.success";
         public static final String ANSWER_ADD_MUSIC_ALREADY_EXISTS = "answer.addMusic.alreadyExists";
@@ -28,6 +31,8 @@ public class MessageKeyConstants {
         public static final String ASK_GROUP_SHARE_COCK_SIZE = "ask.groupShareCockSize";
         public static final String ASK_ALEX_RUBCHINSKIY = "ask.imAlexRubchinskiy";
         public static final String ASK_ADD_MUSIC = "ask.addMusic";
+        public static final String ASK_TURN_BEREAL_ON = "ask.turnBerealOn";
+        public static final String ASK_TURN_BEREAL_OFF = "ask.turnBerealOff";
         public static final String INLINE_QUERY_ASK_SHARE_COCK_SIZE = "inlineQuery.ask.shareCockSize";
     }
 }

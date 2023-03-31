@@ -34,4 +34,4 @@ telegram:
     mainChatId: -970277358
 
 bereal:
-  enabled: true
+  enabled: false

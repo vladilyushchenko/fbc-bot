@@ -19,9 +19,12 @@ public class MessageKeyConstants {
         public static final String ANSWER_ADD_MUSIC_WRITE_TITLE = "answer.addMusic.writeTitle";
         public static final String INLINE_QUERY_TITLE_SHARE_COCK_SIZE = "inlineQuery.title.shareCockSize";
         public static final String INLINE_QUERY_DESCRIPTION_SHARE_COCK_SIZE = "inlineQuery.description.shareCockSize";
+        public static final String INLINE_QUERY_TITLE_FIND_FRIEND = "inlineQuery.title.findFriend";
+        public static final String INLINE_QUERY_DESCRIPTION_FIND_FRIEND = "inlineQuery.description.findFriend";
         public static final String INLINE_QUERY_REPLY_MEMBER_GOOD_SIZE = "inlineQuery.reply.clubMember.goodCockSize";
         public static final String INLINE_QUERY_REPLY_MEMBER_BAD_SIZE = "inlineQuery.reply.clubMember.badCockSize";
         public static final String INLINE_QUERY_REPLY_DEFAULT_SIZE = "inlineQuery.reply.cockSize";
+        public static final String INLINE_QUERY_REPLY_FIND_FRIEND = "inlineQuery.reply.findFriend";
     }
 
     public static class IncomeCommand {

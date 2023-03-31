@@ -20,14 +20,14 @@ import static com.fbc.bot.util.MessageKeyConstants.Response.ANSWER_BEREAL_NOT_AD
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class AdminCheckAuditAspect {
+public class AdminCheckAspect {
 
     private final UserService userService;
     private final BotSendMessageService botSendMessageService;
     private final LocaleMessageProvider messageService;
 
     @SneakyThrows
-    @Around("@annotation(com.fbc.bot.config.annotation.AdminCheckAudit)")
+    @Around("@annotation(com.fbc.bot.config.annotation.AdminCheck)")
     public Object sendEvent(ProceedingJoinPoint joinPoint) {
         for (var arg : joinPoint.getArgs()) {
             if (arg instanceof Update) {

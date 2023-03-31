@@ -1,6 +1,6 @@
 package com.fbc.bot.telegram.handler.handlers;
 
-import com.fbc.bot.config.annotation.AdminCheckAudit;
+import com.fbc.bot.config.annotation.AdminCheck;
 import com.fbc.bot.config.scheduled.AlcoholicBerealScheduler;
 import com.fbc.bot.message.service.LocaleMessageProvider;
 import com.fbc.bot.telegram.handler.MessageHandler;
@@ -27,7 +27,7 @@ public class TurnBerealOnMessageHandler implements MessageHandler {
     }
 
     @Override
-    @AdminCheckAudit
+    @AdminCheck
     public BotApiMethod<?> handleMessage(Update update) {
         String answerMessage = messageService.getLocalMessage(ANSWER_BEREAL_TURNED_ON);
         scheduler.setEnabled(true);

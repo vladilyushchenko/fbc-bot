@@ -48,7 +48,7 @@ public class BotSendMessageService {
                 .orElse(false);
     }
 
-    private void sendMessage(Long chatId, String message) {
+    public void sendMessage(Long chatId, String message) {
         try {
             telegramApiClient.sendMessage(telegramProperties.getBot().getBotToken(), chatId, message);
         } catch (Exception e) {

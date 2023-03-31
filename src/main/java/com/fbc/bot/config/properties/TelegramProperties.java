@@ -18,6 +18,7 @@ public class TelegramProperties {
     public static class BotProperties {
         private String botToken;
         private Long auditChatId;
+        private String mainChatId;
 
         public BotProperties() {
         }

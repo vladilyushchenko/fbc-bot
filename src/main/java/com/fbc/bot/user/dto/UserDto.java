@@ -19,7 +19,7 @@ public class UserDto implements BaseDto {
     @NotNull(message = NOT_NULL_FIELD)
     String lastName;
     @NotNull(message = NOT_NULL_FIELD)
-    String username;
+    String userName;
     @NotNull(message = NOT_NULL_FIELD)
     UserStatus userStatus;
 }

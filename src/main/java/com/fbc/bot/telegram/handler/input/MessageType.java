@@ -6,5 +6,7 @@ public enum MessageType {
     JOIN_PARTY,
     INLINE_GLOBAL,
     ADD_MUSIC,
-    UNKNOWN
+    UNKNOWN,
+    TURN_BEREAL_ON,
+    TURN_BEREAL_OFF
 }

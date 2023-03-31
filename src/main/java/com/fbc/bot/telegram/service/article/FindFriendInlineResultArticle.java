@@ -1,5 +1,7 @@
 package com.fbc.bot.telegram.service.article;
 
+import com.fbc.bot.user.service.FindFriendTextGenerator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.inlinequery.inputmessagecontent.InputTextMessageContent;
@@ -8,7 +10,10 @@ import org.telegram.telegrambots.meta.api.objects.inlinequery.result.InlineQuery
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor
 public class FindFriendInlineResultArticle implements ResultArticle {
+
+    private final FindFriendTextGenerator findFriendTextGenerator;
 
     @Override
     public InlineQueryResultArticle getArticle(Update update) {
@@ -19,7 +24,8 @@ public class FindFriendInlineResultArticle implements ResultArticle {
         // todo: add pictures
 
         InputTextMessageContent content = new InputTextMessageContent();
-        content.setMessageText("I love vodka");
+        String response = findFriendTextGenerator.getText(update.getInlineQuery().getFrom().getId());
+        content.setMessageText(response);
         article.setInputMessageContent(content);
         // todo: add pictures
         return article;

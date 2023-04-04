@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/postgres}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:docker}
     hikari:
@@ -29,6 +29,8 @@ spring:
 
 telegram:
   bot:
-    botToken: ${TELEGRAM_BOT_TOKEN:6008183446:AAGQlTK3_-DBlO-dlZjyTND1FgVsTdkUjw4}
-    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:360617541}
-    mainChatId: -970277358
+    botToken: ${TELEGRAM_BOT_TOKEN:6051083691:AAGV8y6IWaYIiAnCv7qS7vjsA88dUomr9lY}
+    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:424189266}
+    mainChatId: ${TELEGRAM_MAIN_CHAT_ID:-970277358}
+    inlinePhotoUrl: https://i.ibb.co/Zz71HFH/FBC-logo-transparent.png
+#    1768160429

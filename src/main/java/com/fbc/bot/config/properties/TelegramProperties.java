@@ -19,6 +19,7 @@ public class TelegramProperties {
         private String botToken;
         private Long auditChatId;
         private String mainChatId;
+        private String inlinePhotoUrl;
 
         public BotProperties() {
         }

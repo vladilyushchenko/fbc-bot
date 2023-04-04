@@ -1,8 +1,8 @@
 package com.fbc.bot.telegram.service.article;
 
+import com.fbc.bot.config.properties.TelegramProperties;
 import com.fbc.bot.message.service.LocaleMessageProvider;
 import com.fbc.bot.user.service.FindFriendTextGenerator;
-import com.fbc.bot.util.MessageKeyConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -20,6 +20,7 @@ public class FindFriendInlineResultArticle implements ResultArticle {
 
     private final FindFriendTextGenerator findFriendTextGenerator;
     private final LocaleMessageProvider localeMessageProvider;
+    private final TelegramProperties telegramProperties;
 
     @Override
     public InlineQueryResultArticle getArticle(Update update) {
@@ -27,13 +28,13 @@ public class FindFriendInlineResultArticle implements ResultArticle {
         article.setId(UUID.randomUUID().toString());
         article.setTitle(localeMessageProvider.getLocalMessage(INLINE_QUERY_TITLE_FIND_FRIEND));
         article.setDescription(localeMessageProvider.getLocalMessage(INLINE_QUERY_DESCRIPTION_FIND_FRIEND));
-        // todo: add pictures
+        article.setThumbUrl(telegramProperties.getBot().getInlinePhotoUrl());
 
         InputTextMessageContent content = new InputTextMessageContent();
         String response = findFriendTextGenerator.getText(update.getInlineQuery().getFrom().getId());
         content.setMessageText(response);
         article.setInputMessageContent(content);
-        // todo: add pictures
+
         return article;
     }
 }

@@ -1,6 +1,7 @@
 package com.fbc.bot.telegram.service.article;
 
 import com.fbc.bot.cocksize.service.CockSizeServiceFacade;
+import com.fbc.bot.config.properties.TelegramProperties;
 import com.fbc.bot.message.service.LocaleMessageProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class CockSizeInlineResultArticle implements ResultArticle {
 
     private final LocaleMessageProvider messageProvider;
     private final CockSizeServiceFacade sizeServiceFacade;
+    private final TelegramProperties telegramProperties;
 
     @Override
     public InlineQueryResultArticle getArticle(Update update) {
@@ -26,6 +28,7 @@ public class CockSizeInlineResultArticle implements ResultArticle {
         article.setId(UUID.randomUUID().toString());
         article.setTitle(messageProvider.getLocalMessage(INLINE_QUERY_TITLE_SHARE_COCK_SIZE));
         article.setDescription(messageProvider.getLocalMessage(INLINE_QUERY_DESCRIPTION_SHARE_COCK_SIZE));
+        article.setThumbUrl(telegramProperties.getBot().getInlinePhotoUrl());
 
         InputTextMessageContent content = new InputTextMessageContent();
         content.setMessageText(getCockSizeAnswerMessage(update));

@@ -2,11 +2,9 @@ package com.fbc.bot.user.service;
 
 import com.fbc.bot.message.service.LocaleMessageProvider;
 import com.fbc.bot.user.model.User;
-import com.fbc.bot.util.MessageKeyConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -32,6 +30,6 @@ public class FindFriendTextGenerator {
         }
 
         return String.format(localeMessageProvider.getLocalMessage(INLINE_QUERY_REPLY_FIND_FRIEND),
-                "@" + firstUser.getUserName(), "@" + secondUser.getUserName());
+                "@" + secondUser.getUserName());
     }
 }

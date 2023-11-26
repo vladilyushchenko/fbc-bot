@@ -6,12 +6,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 import static com.fbc.bot.common.model.base.BaseEntity.ALLOCATION_SIZE;
 import static com.fbc.bot.common.model.base.BaseEntity.SEQUENCE_GENERATOR;
-import static javax.persistence.EnumType.STRING;
+import static jakarta.persistence.EnumType.STRING;
 
 @Getter
 @Setter
@@ -31,7 +31,7 @@ public class Music extends BaseEntity {
     @Enumerated(STRING)
     private DataSource dataSource;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinTable(name = "users_music",
             joinColumns = @JoinColumn(name = "music_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")

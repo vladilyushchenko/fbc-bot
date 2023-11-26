@@ -1,15 +1,15 @@
 package com.fbc.bot.cocksize.model;
 
 import com.fbc.bot.user.model.User;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
+import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.GenerationType.AUTO;
 import static java.time.OffsetDateTime.now;
-import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Getter

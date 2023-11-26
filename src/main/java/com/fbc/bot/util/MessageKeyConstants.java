@@ -25,6 +25,7 @@ public class MessageKeyConstants {
         public static final String INLINE_QUERY_REPLY_MEMBER_BAD_SIZE = "inlineQuery.reply.clubMember.badCockSize";
         public static final String INLINE_QUERY_REPLY_DEFAULT_SIZE = "inlineQuery.reply.cockSize";
         public static final String INLINE_QUERY_REPLY_FIND_FRIEND = "inlineQuery.reply.findFriend";
+        public static final String INLINE_QUERY_REPLY_FIND_FRIEND_WHEN_ALONE = "inlineQuery.reply.findFriend.whenAlone";
     }
 
     public static class IncomeCommand {

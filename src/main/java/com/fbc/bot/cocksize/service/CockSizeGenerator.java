@@ -1,6 +1,6 @@
 package com.fbc.bot.cocksize.service;
 
-import com.fbc.bot.message.service.LocaleMessageProvider;
+import com.fbc.bot.common.constant.LocaleMessageProvider;
 import com.fbc.bot.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -19,9 +19,9 @@ public class CockSizeGenerator {
 
     public String generateAnswer(User user) {
         if (CLUB_MEMBER.equals(user.getUserStatus())) {
-            final String name = Strings.isBlank(user.getNickname())
+            final String name = Strings.isBlank(user.getCustomName())
                     ? "@".concat(user.getUserName())
-                    : user.getNickname();
+                    : user.getCustomName();
             return getMemberAnswer(name, user.getCockSize().getSize());
         }
         return getUnknownMemberAnswer(user, user.getCockSize().getSize());

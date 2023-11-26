@@ -2,11 +2,11 @@ package com.fbc.bot.user.controller;
 
 import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.user.service.UserService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @RestController
 @RequiredArgsConstructor

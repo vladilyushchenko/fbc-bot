@@ -1,6 +1,6 @@
 package com.fbc.bot.user.service;
 
-import com.fbc.bot.exception.EntityNotFoundException;
+import com.fbc.bot.common.exception.EntityNotFoundException;
 import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.user.mapper.UserMapper;
 import com.fbc.bot.user.model.User;
@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.fbc.bot.user.model.UserStatus.UNKNOWN;
-import static com.fbc.bot.user.model.User_.TELEGRAM_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -51,10 +50,6 @@ public class UserService {
 
     public User getUserByTelegramId(Long telegramId) {
         return repository.findByTelegramId(telegramId)
-                .orElseThrow(() -> new EntityNotFoundException(User.class, TELEGRAM_ID, telegramId));
-    }
-
-    public boolean existsByTelegramId(Long telegramId) {
-        return repository.existsByTelegramId(telegramId);
+                .orElseThrow(() -> new EntityNotFoundException(User.class));
     }
 }

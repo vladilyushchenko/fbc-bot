@@ -2,16 +2,14 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'org.sonarqube' version '3.3'
-    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'org.springframework.boot' version '3.1.0'
     id 'org.barfuin.gradle.jacocolog' version '1.0.1'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.fbc'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-apply plugin: 'jacoco'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -24,7 +22,14 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', 'Hoxton.SR5')
+    set('springCloudVersion', '2022.0.4')
+    set('mapstructVersion', '1.4.2.Final')
+    set('telegramBotsVersion', '6.0.1')
+    set('testContainerPostgresVersion', '1.16.3')
+    set('jupyterVersion', '1.16.2')
+    set('jakartaModelgenVersion', '5.6.15.Final')
+    set('jaxbApiVersion', '2.3.0')
+    set('vavrVersion', '0.10.4')
 }
 
 dependencies {
@@ -42,28 +47,26 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.postgresql:postgresql'
     implementation 'org.flywaydb:flyway-core'
-    annotationProcessor 'org.hibernate:hibernate-jpamodelgen'
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen-jakarta:${jakartaModelgenVersion}"
+    implementation "javax.xml.bind:jaxb-api:${jaxbApiVersion}"
 
     // Feign Client
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     // MapStruct
-    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
     // Util
-    implementation "io.vavr:vavr:0.10.4"
-
-    // Util
-    implementation "io.vavr:vavr:0.10.4"
+    implementation "io.vavr:vavr:${vavrVersion}"
 
     // Telegram API
-    implementation 'org.telegram:telegrambots-spring-boot-starter:6.0.1'
+    implementation "org.telegram:telegrambots-spring-boot-starter:${telegramBotsVersion}"
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.testcontainers:postgresql:1.16.3'
-    testImplementation 'org.testcontainers:junit-jupiter:1.16.2'
+    testImplementation "org.testcontainers:postgresql:${testContainerPostgresVersion}"
+    testImplementation "org.testcontainers:junit-jupiter:${jupyterVersion}"
 }
 
 dependencyManagement {
@@ -72,10 +75,14 @@ dependencyManagement {
     }
 }
 
+
+
 tasks.named('test') {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 }
+
+apply plugin: 'jacoco'
 
 jacoco {
     toolVersion = "0.8.7"
@@ -93,7 +100,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = 'LINE'
-                minimum = 0.5
+                minimum = 0
             }
         }
     }

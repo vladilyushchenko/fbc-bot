@@ -1,6 +1,6 @@
 package com.fbc.bot.telegram.service;
 
-import com.fbc.bot.config.properties.TelegramProperties;
+import com.fbc.bot.common.config.properties.TelegramProperties;
 import com.fbc.bot.telegram.client.TelegramApiClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +29,8 @@ public class BotSendMessageService {
                     .orElseGet(() -> update.getInlineQuery().getQuery());
             final String author = "@".concat(update.hasInlineQuery()
                     ? update.getInlineQuery().getFrom().getUserName()
-                    : Optional.ofNullable(update.getMessage())
-                    .map(Message::getFrom)
-                    .map(User::getUserName)
-                    .orElseGet(() -> update.getMessage().getFrom().getFirstName()));
+                    : getSimpleMessageAuthor(update)
+            );
             sendMessage(telegramProperties.getBot().getAuditChatId(),
                     String.format("%s: %s", author, text));
         } catch (Exception e) {
@@ -46,6 +44,13 @@ public class BotSendMessageService {
                 .map(Message::getChatId)
                 .map(chatId -> chatId.equals(telegramProperties.getBot().getAuditChatId()))
                 .orElse(false);
+    }
+
+    private String getSimpleMessageAuthor(Update update) {
+        return Optional.ofNullable(update.getMessage())
+                .map(Message::getFrom)
+                .map(User::getUserName)
+                .orElseGet(() -> update.getMessage().getFrom().getFirstName());
     }
 
     public void sendMessage(Long chatId, String message) {

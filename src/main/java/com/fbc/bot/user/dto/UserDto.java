@@ -2,10 +2,9 @@ package com.fbc.bot.user.dto;
 
 import com.fbc.bot.common.dto.BaseDto;
 import com.fbc.bot.user.model.UserStatus;
+import jakarta.validation.constraints.NotNull;
 import lombok.Setter;
 import lombok.Value;
-
-import javax.validation.constraints.NotNull;
 
 import static com.fbc.bot.util.ValidationConstants.NOT_NULL_FIELD;
 

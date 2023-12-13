@@ -112,6 +112,6 @@ sonarqube {
     properties {
         property 'sonar.host.url', 'https://sonarcloud.io'
         property 'sonar.organization', 'fbc-bot'
-        property 'sonar.projectKey', 'vladilyushchenko_fbc-bot'
+        property 'sonar.projectKey', 'fbc-bot'
     }
 }

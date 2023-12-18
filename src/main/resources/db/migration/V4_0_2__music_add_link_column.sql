@@ -1,2 +1,2 @@
 ALTER TABLE music
-    ADD COLUMN link TEXT;
+    ADD COLUMN link VARCHAR;

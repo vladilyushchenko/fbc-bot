@@ -1,6 +1,8 @@
 package com.fbc.bot.telegram.controller;
 
+import com.fbc.bot.telegram.constant.BotRoutes;
 import com.fbc.bot.telegram.service.BotService;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +16,8 @@ public class BotController {
 
     private final BotService service;
 
-    @PostMapping("/")
-    public BotApiMethod<?> onChatUpdate(@RequestBody Update update) {
+    @PostMapping(BotRoutes.TELEGRAM_BOT)
+    public BotApiMethod<?> onChatUpdate(@RequestBody @NotNull Update update) {
         return service.handleUpdate(update);
     }
 }

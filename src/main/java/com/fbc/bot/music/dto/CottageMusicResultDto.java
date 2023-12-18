@@ -1,19 +1,19 @@
 package com.fbc.bot.music.dto;
 
 import com.fbc.bot.common.dto.BaseDto;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@SuperBuilder
-@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class CottageMusicResultDto implements BaseDto {
 
-    public Boolean isNew;
-    public MusicDto music;
-    public Boolean success;
-    public CreateMusicStatus status;
+    private Boolean isNew;
+    private MusicDto music;
+    private Boolean success;
+    private CreateMusicStatus status;
 
     public enum CreateMusicStatus {
         NOT_STARTED,

@@ -2,7 +2,7 @@ package com.fbc.bot.bereal.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import static com.fbc.bot.common.model.base.BaseEntity.ALLOCATION_SIZE;
 

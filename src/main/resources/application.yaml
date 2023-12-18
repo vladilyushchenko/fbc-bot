@@ -1,10 +1,9 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/fbc-bot}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:docker}
     hikari:
-      schema: fbc-bot
       maximum-pool-size: 3
       idle-timeout: 10000
       connection-timeout: 20000
@@ -22,15 +21,9 @@ spring:
           fetch_size: 5000
     open-in-view: false
 
-    show-sql: true
-
-  flyway:
-    schemas: fbc-bot
-
 telegram:
   bot:
-    botToken: ${TELEGRAM_BOT_TOKEN:6051083691:AAGV8y6IWaYIiAnCv7qS7vjsA88dUomr9lY}
-    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID:424189266}
-    mainChatId: ${TELEGRAM_MAIN_CHAT_ID:-970277358}
-    inlinePhotoUrl: https://i.ibb.co/Zz71HFH/FBC-logo-transparent.png
-#    1768160429
+    botToken: ${TELEGRAM_BOT_TOKEN}
+    auditChatId: ${TELEGRAM_AUDIT_CHAT_ID}
+    mainChatId: ${TELEGRAM_MAIN_CHAT_ID}
+    inlinePhotoUrl: ${TELEGRAM_INLINE_PHOTO_URL}

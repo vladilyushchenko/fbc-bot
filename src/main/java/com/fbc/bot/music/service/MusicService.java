@@ -1,17 +1,16 @@
 package com.fbc.bot.music.service;
 
-import com.fbc.bot.exception.EntityNotFoundException;
+import com.fbc.bot.common.exception.EntityNotFoundException;
 import com.fbc.bot.music.client.DeezerMusicClient;
 import com.fbc.bot.music.dto.CottageMusicResultDto;
 import com.fbc.bot.music.dto.MusicDto;
 import com.fbc.bot.music.dto.deeezer.DeezerMusicResponseDto;
+import com.fbc.bot.music.mapper.MusicMapper;
 import com.fbc.bot.music.model.DataSource;
 import com.fbc.bot.music.model.Music;
 import com.fbc.bot.music.repository.MusicRepository;
-import com.fbc.bot.music.service.mapper.MusicMapper;
 import com.fbc.bot.user.model.User;
 import com.fbc.bot.user.repository.UserRepository;
-import com.fbc.bot.user.service.UserService;
 import com.fbc.bot.util.HttpUtils;
 import com.google.common.collect.Sets;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,6 @@ public class MusicService {
     private final DeezerMusicClient deezerMusicClient;
     private final MusicRepository musicRepository;
     private final MusicMapper musicMapper;
-    private final UserService userService;
     private final UserRepository userRepository;
 
     @Transactional
@@ -37,21 +35,19 @@ public class MusicService {
                 .orElseThrow(() -> new EntityNotFoundException(User.class, userId));
 
         if (HttpUtils.isValidUrl(musicQuery)) {
-            var dbEntity = musicRepository.findByLinkIgnoreCase(musicQuery);
-            if (dbEntity.isPresent()) {
-                user.getMusic().add(dbEntity.get());
-                dbEntity.get().getUsers().add(user);
-                musicRepository.save(dbEntity.get());
+            var existingMusic = musicRepository.findByLinkIgnoreCase(musicQuery);
+            if (existingMusic.isPresent()) {
+                user.getMusic().add(existingMusic.get());
+                existingMusic.get().getUsers().add(user);
+                musicRepository.save(existingMusic.get());
                 return CottageMusicResultDto.builder()
                         .isNew(false)
                         .success(true)
-                        .music(musicMapper.toDto(dbEntity.get()))
+                        .music(musicMapper.toDto(existingMusic.get()))
                         .status(ADDED)
                         .build();
             }
             var entity = new Music();
-            entity.setTitle(musicQuery);
-            entity.setAuthor(musicQuery);
             entity.setLink(musicQuery);
             entity.setDataSource(DataSource.LINK);
             entity.setUsers(Sets.newHashSet(user));
@@ -76,10 +72,10 @@ public class MusicService {
     private CottageMusicResultDto createMusicFromExternal(User user, DeezerMusicResponseDto musicResponse) {
         boolean isNew = false;
         var musicDto = musicResponse.getData().get(0);
-        var music = musicRepository.findByLinkIgnoreCase(musicDto.getLink());
+        var existingMusic = musicRepository.findByLinkIgnoreCase(musicDto.getLink());
 
-        MusicDto resultValue;
-        if (music.isEmpty()) {
+        final MusicDto resultValue;
+        if (existingMusic.isEmpty()) {
             var entity = musicMapper.toEntityIgnoreId(musicDto);
             entity.setDataSource(DataSource.DEEZER);
             entity.setUsers(Sets.newHashSet(user));
@@ -87,11 +83,9 @@ public class MusicService {
             resultValue = musicMapper.toDto(entity);
             isNew = true;
         } else {
-            music.get().getUsers().add(user);
-//            user.getMusic().add(music.get());
-//            userService.updateUser(user);
-            musicRepository.save(music.get());
-            resultValue = musicMapper.toDto(music.get());
+            existingMusic.get().getUsers().add(user);
+            musicRepository.save(existingMusic.get());
+            resultValue = musicMapper.toDto(existingMusic.get());
         }
 
         return CottageMusicResultDto.builder()

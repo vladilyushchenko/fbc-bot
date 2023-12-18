@@ -1,6 +1,6 @@
 package com.fbc.bot.common;
 
-import com.fbc.bot.telegram.service.CockSizeService;
+import com.fbc.bot.cocksize.service.CockSizeService;
 import com.fbc.bot.user.dto.UserDto;
 import com.fbc.bot.user.model.User;
 import com.fbc.bot.user.service.UserService;

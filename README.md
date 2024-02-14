@@ -22,10 +22,10 @@ Use VPN if Telegram Api is unavailable in your country.
 
 <b>Bot works via webhook technology. You need to set webhook link via following link:</b>
 
-    https://api.telegram.org/{bot_token}/setWebhook?url={webhook-link}
+    https://api.telegram.org/bot{bot_token}/setWebhook?url={webhook-link}
 
 You can read more about it at https://hevodata.com/learn/telegram-webhooks/#i2
 
 You can get current state of bot via the following link:
 
-    https://api.telegram.org/{bot_token}/getWebhookInfo
+    https://api.telegram.org/bot{bot_token}/getWebhookInfo
